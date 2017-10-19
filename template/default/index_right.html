@@ -1,0 +1,76 @@
+{if condition="config('web.WEB_FHY') neq 0"}
+<div class="leifeng-rank tpt-sidebar cl">
+	<h3>最新会员</h3>
+	<dl class="cl">
+	{volist name="tptm" id="vo"}
+    <dd><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}"><cite>{$vo.point}</cite><i>{$vo.username}</i></a></dd>
+	{/volist}
+</dl>
+</div>
+{/if}
+
+
+{if condition="config('web.WEB_FTP') neq 0"}
+<div class="tpt-banner tpt-none-768 cl">
+<div class="layui-carousel" id="banner">
+  <div carousel-item>
+    {volist name="tptb" id="vo"}
+    <div><a target="_blank" href="{$vo.links}"><img src="__UPLO__{$vo.pic}"></a></div>
+	{/volist}
+  </div>
+</div>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  carousel.render({
+    elem: '#banner'
+    ,width: '100%'
+    ,height: '180px'
+    ,arrow: 'always'
+  });
+});
+</script>
+</div>
+{/if}
+
+
+<div class="tpt-sidebar cl">
+	<h3>热门标签</h3>
+	<div class="tpt-f cl">
+     {volist name="tagss" id="tag"}
+	 <a href="__ROOT__/tags.html?id={$tag}">{$tag}</a>
+	 {/volist}
+  </div>
+</div>
+
+{if condition="config('web.WEB_FTJ') neq 0"}
+<div class="tpt-sidebar cl">
+	<h3>热门推荐</h3>
+	<ul class="tpt-c cl">
+		{volist name="tptf" id="vo"}
+		<li><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a><span><i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}<span></li>
+		{/volist}
+	</ul>
+</div>
+{/if}
+
+{if condition="config('web.WEB_FJX') neq 0"}
+<div class="tpt-sidebar cl">
+	<h3>精选内容</h3>
+	<ul class="tpt-c cl">
+	    {volist name="tpte" id="vo"}
+		<li><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a><span><i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}<span></li>
+		{/volist}
+	</ul>
+</div>
+{/if}
+
+<div class="tpt-sidebar cl">
+	<h3>友情连接</h3>
+	<ul class="tpt-e cl">
+		{volist name="tptl" id="vo"}
+		<li><a target="_blank" href="{$vo.links}">{$vo.name}</a></li>
+		{/volist}
+	</ul>
+</div>
+

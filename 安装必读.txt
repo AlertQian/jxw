@@ -1,0 +1,15 @@
+首先把安装包解压到根目录，然后在域名后面添加/install直接安装。如：http://www.xxx.com/install
+
+按照提示填写你的数据库信息就可以安装成功。
+
+如果无法安装数据库请直接手动导入数据库：
+
+1.把install/shujuku.sql文件导入到你的数据库里面。
+
+2.把install/database.php文件放入application里面，填好你的数据库信息就行。
+
+安装完成后，可以把install文件删除。
+
+后台地址/admin.php（可重命名）后台账号：admin，密码：123456，口令：123456
+
+授权码：D8CF7C907175CD59

@@ -1,0 +1,96 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="/favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" href="__ADMIN__/layui/css/layui.css">
+<link rel="stylesheet" href="__HOME__/css/style.css">
+<script src="__ADMIN__/js/jquery-1.9.1.min.js"></script>
+<script src="__ADMIN__/layui/layui.js"></script>
+</head>
+<body>
+<div id="header" class="tpt-header">
+	<div class="tpt-wp cl">
+		<div class="tpt-logo"><a href="__ROOT__/"><img src="__HOME__/img/logo.png"></a></div>
+		<div id="menu_list" class="tpt-block-1200 tpt-block-1920">
+			<ul id="menu_nav" class="layui-nav">
+				<li class="layui-nav-item"><a href="__ROOT__/">网站首页</a></li>
+				{volist name="tptop" id="vo" key="k"}
+				{if condition="$vo['shows'] eq 1"}
+				<li class="layui-nav-item">
+				{if condition="$vo['links'] neq ''"}
+				<a {if condition="$vo['blank'] eq 1"}target="_blank"{/if} href="{$vo.links}">{else/}<a href="javascript:;">{/if}{$vo.name}</a>
+				{if condition="$vo['links'] eq ''"}<dl class="layui-nav-child">{/if}
+				{volist name="tptops" id="vs" key="k"}
+				{if condition ="$vo.id eq $vs['tid']"}
+				{if condition="$vs['shows'] eq 1"}<dd><a {if condition="$vs['blank'] eq 1"}target="_blank"{/if} href="{$vs.links}">{$vs.name}</a></dd>{/if}
+				{/if}
+				{/volist}
+				{if condition="$vo['links'] eq ''"}</dl>{/if}
+				</li>
+				{/if}
+				{/volist}
+			</ul>
+		</div>
+		
+		<div class="tpt-addtop tpt-none-1200 tpt-none-1920">
+		
+		<div id="menu_button">
+		<i style="cursor: pointer;font-size: 32px;position: relative;top: -5px;" class="layui-icon">&#xe65f;</i>
+		</div>
+		
+		<div class="tpt-add">
+		<a href="__ROOT__/user/set.html">
+		<i style="color: #FFFFFF;font-size: 30px;position: relative;top: -5px;" class="layui-icon">&#xe620;</i>
+		</a>
+		</div>
+
+		</div>
+
+		<div class="tpt-status">
+		{if condition="$Think.session.validate neq ''"}
+		<a class="tpt-avatar" href="__ROOT__/home/{$tptuser.userid}.html"><img src="{$tptuser.userhead}"></a>
+		<a class="ava tpt-none-768 tpt-none-1024 tpt-none-1200" href="__ROOT__/home/{$tptuser.userid}.html">{$tptuser.username}</a>
+		<a class="tpt-none-768 tpt-none-1024 tpt-none-1200">{include file="public/gradeh"}</a>
+		{if condition="$tptuser['reply'] neq 0"}
+		<a class="tpt-message" href="__ROOT__/user/message.html"><i class="iconfont">&#xe60a;</i><span>{$tptuser.reply}</span></a>
+		{/if}
+		<a class="avb tpt-none-768 tpt-none-1024" href="__ROOT__/user/set.html"><i class="layui-icon" style="font-size: 24px;margin-right: 5px;float: left;position: relative;top: -1px;">&#xe620;</i>设置</a>
+		<a class="avb tpt-none-768 tpt-none-1024 logout" href="javascript:void(0)"><i class="iconfont" style="font-size: 24px;margin-right: 5px;float: left;position: relative;top: 1px;">&#xe68e;</i>退出</a>
+		{else/}
+		{if condition="config('web.WEB_LOG') eq 1"}<a href="__ROOT__/user/login.html">登录</a><a href="__ROOT__/user/reg.html">注册</a>{/if}
+		{if condition="config('web.WEB_LOG') eq 3"}<a class="login" href="javascript:void(0)"><i class="iconfont" style="font-size: 38px;float: left;position: relative;top: -2px;">&#xe606;</i></a><a href="__ROOT__/user/login.html">登录</a><a href="__ROOT__/user/reg.html">注册</a>{/if}
+		{if condition="config('web.WEB_LOG') eq 2"}
+		<a class="login" href="javascript:void(0)"><i class="iconfont" style="font-size: 38px;margin-right: 15px;float: left;position: relative;top: -2px;">&#xe606;</i>立即登录</a>
+        {/if}
+		{/if}
+		</div>
+	</div>
+</div>
+<script>
+layui.use('element', function(){
+  var element = layui.element();
+});
+</script>
+<script>
+window.onresize = function(){
+    var W = document.documentElement.clientWidth || document.body.clientWidth;
+	if(W < 1008){
+       $('#menu_nav').attr('class','layui-nav layui-nav-tree');
+	   $("#menu_list").css("display", "none");
+    }else{
+       $('#menu_nav').attr('class','layui-nav');
+	   $('#header').attr('class','tpt-header');
+	   $('.layui-nav-item').attr('class','layui-nav-item');
+    }
+}
+$(window).resize();
+</script>
+<script>
+$("#menu_button").click(function(){
+if($("#menu_list").css("display")=="none"){
+$("#menu_list").show();
+}else{
+$("#menu_list").hide();
+}
+});
+</script>
