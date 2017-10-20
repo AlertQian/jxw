@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:41:"./application/admin\view\index_index.html";i:1507698989;s:42:"./application/admin\view\index_header.html";i:1507643832;s:42:"./application/admin\view\index_footer.html";i:1504421376;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:41:"./application/admin\view\index_index.html";i:1508475659;s:42:"./application/admin\view\index_header.html";i:1507643832;s:42:"./application/admin\view\index_footer.html";i:1504421376;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>  
@@ -42,8 +42,9 @@
     <a href="javascript:;">内容管理</a>
     <dl class="layui-nav-child">
 	  <dd><a href="<?php echo url('navtop/index'); ?>" target="main"><i class="layui-icon">&#xe609;</i>导航管理</a></dd>
-      <dd><a href="<?php echo url('category/index'); ?>" target="main"><i class="layui-icon">&#xe61f;</i>板块管理</a></dd>
-      <dd><a href="<?php echo url('content/index'); ?>" target="main"><i class="layui-icon">&#xe63c;</i>内容管理</a></dd>
+    <dd><a href="<?php echo url('school/index'); ?>" target="main"><i class="layui-icon">&#xe628;</i>驾校管理</a></dd>
+    <dd><a href="<?php echo url('category/index'); ?>" target="main"><i class="layui-icon">&#xe61f;</i>板块管理</a></dd>
+    <dd><a href="<?php echo url('content/index'); ?>" target="main"><i class="layui-icon">&#xe63c;</i>内容管理</a></dd>
 	  <dd><a href="<?php echo url('comment/index'); ?>" target="main"><i class="layui-icon">&#xe63a;</i>评论管理</a></dd>
     </dl>
     </li>
@@ -52,7 +53,7 @@
     <a href="javascript:;">综合管理</a>
     <dl class="layui-nav-child">
 	  <dd><a href="<?php echo url('member/index'); ?>" target="main"><i class="layui-icon">&#xe612;</i>会员管理</a></dd>
-      <dd><a href="<?php echo url('banner/index'); ?>" target="main"><i class="layui-icon">&#xe60d;</i>图片管理</a></dd>
+    <dd><a href="<?php echo url('banner/index'); ?>" target="main"><i class="layui-icon">&#xe60d;</i>图片管理</a></dd>
 	  <dd><a href="<?php echo url('links/index'); ?>" target="main"><i class="layui-icon">&#xe64e;</i>友情连接</a></dd>
 	  <dd><a href="<?php echo url('point/index'); ?>" target="main"><i class="layui-icon">&#xe641;</i>积分管理</a></dd>
     </dl>
