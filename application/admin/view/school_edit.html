@@ -14,7 +14,8 @@
 .wangEditor-menu-container .menu-group {padding: 0;}
 .wangEditor-container {border: 1px solid #e6e6e6;}
 .layui-upload-img {width: 92px;height: 92px;margin: 0 10px 10px 0;}
-.img-del{color: #fd3d00;position: relative;top: -45px;left: -20px;font-size: 20px;cursor: pointer;}
+.img-del{color: #fd3d00;position: relative;top: -45px;left: -20px;font-size: 20px;cursor: pointer;background: #fff;border-radius: 50%}
+.imgbox{display: inline-block;}
 </style>
 <body>
 <div class="fly-panel fly-panel-user">
@@ -51,7 +52,9 @@
         <div class="layui-upload-list" id="demo2">
           {if condition="isset($imgsarr)"}
             {volist name="imgsarr" id="vo"}
-              <img src="{$vo}" class="layui-upload-img"><i class="layui-icon img-del">&#x1007;</i>
+              <div class="imgbox">
+                <img src="{$vo}" class="layui-upload-img"><i class="layui-icon img-del">&#x1007;</i>
+              </div>
             {/volist}
           {/if}
         </div>
@@ -116,7 +119,6 @@ layui.use(['form', 'upload'],function(){
   upload = layui.upload,
   jq = layui.jquery,
   str =$('input[name=imgs]').val();
-  console.log(str);
   var arr =new Array();
   upload.render({
     url: '{:url("upload/upimage")}'
@@ -148,8 +150,12 @@ layui.use(['form', 'upload'],function(){
     }
     ,done: function(res){
       //上传完毕
-      arr.push(res.path);
-      str = arr.join(',');
+      if(str.length == 0){
+        arr.push(res.path);
+        str = arr.join(',');
+      }else{
+        str =str+","+res.path;
+      }
       jq('input[name=imgs]').val(str);
     }
   });
@@ -173,6 +179,39 @@ layui.use(['form', 'upload'],function(){
     return false;
   });
 })
+</script>
+<script type="text/javascript">
+  $(function(){
+    $(".img-del").click(function(e){
+      e.preventDefault();
+      var src=$(this).prev('img').attr('src'),
+          imgs=$("input[name=imgs]").val(),
+          tag=",";
+          if(imgs.indexOf(tag) !== -1){
+            if($(this).parent('.imgbox').index() == 0){
+              src=src+tag;
+            }else{
+              src=tag+src;
+            }
+            delimg=imgs.replace(src,'');
+          }else{
+            delimg=imgs.replace(src,'');
+          }
+          $.ajax({
+            url:"school/delimg",
+            type:"post",
+            data:{src:src},
+            success:function(){
+
+            },
+            error:function(){
+              
+            }
+          })
+          $("input[name=imgs]").val(delimg);
+          $(this).parent('.imgbox').remove();
+    })
+  })
 </script>
 </div>
 </div>
