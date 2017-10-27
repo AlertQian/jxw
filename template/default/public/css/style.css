@@ -163,3 +163,19 @@ body {background: #fff;margin-top: 85px;}
 	.tpt-right-1920 {float: right;}
 }
 /*NET*/
+
+/*赞助*/
+#zanzhus{width:450px;height:25pc}
+#zanzhus h2{font-size:1pc;padding:30px 0}
+#zanzhus h2,#zanzhus h3{font-weight:100;color:#999;text-align:center}
+#zanzhus h3{font-size:9pt;padding:20px 0 0}
+#zanzhus .layui-tab-item{width:140px;padding:10px;border:6px solid #ea5f00;margin:0 auto;border-radius:3px;height:140px}
+#zanzhus .layui-tab-content{padding:0 0 10px;text-align:center}
+#zanzhus .layui-tab-content p{font-size:9pt;font-weight:100;color:#999;line-height:38px}
+#zanzhus .layui-tab{margin:0;text-align:none!important}
+#zanzhus .layui-tab-title li{line-height:40px;min-width:75pt;padding:0}
+#zanzhus .layui-tab-title{border-bottom:0 solid #fff;text-align:center}
+#zanzhus .layui-tab-title .layui-this:after{border:0 solid #fff}
+#zanzhus .layui-tab-title .layui-this .zanbox{background:url(/template/default/public/img/radio1.jpg)}
+#zanzhus .zanbox{width:1pc;height:1pc;background:url(/template/default/public/img/radio2.jpg);display:block;float:left;margin:13px 15px 0}
+/*NET*/

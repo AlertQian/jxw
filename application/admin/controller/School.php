@@ -128,4 +128,17 @@ class School extends Common
             $this->error('非法操作');
         }
     }
+    //删除图片
+    public function delimg(){  	
+    	if(request()->isAjax()){	
+    		$src=input('src');
+    		if(unlink('.'.$src)){
+    			echo 1;
+    		}else{
+    			echo 2;
+    		}
+    	}else{
+    		$this->error('删除失败');
+    	}
+    }
 }

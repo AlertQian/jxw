@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>{:config('web.WEB_TIT')}</title>
+<meta name="keywords" content="{:config('web.WEB_KEY')}">
+<meta name="description" content="{:config('web.WEB_DES')}">
+{include file="index/header"}
+<link rel="stylesheet" href="__HOME__/css/index.css">
+<link rel="stylesheet" href="__HOME__/css/right.css">
+<div class="tpt-wp cl">
+<div class="tpt-ml-7">
+<div class="tpt-con1">
+{include file="index/menu"}
+
+{if condition="config('web.WEB_FDZ') neq 0"}
+<ul class="tpt-list">
+{volist name="tptc" id="vo"}
+<li class="tpt-list-li">
+<a href="__ROOT__/home/{$vo.userid}.html" class="tpt-list-avatar">
+<img src="__UPLO__{$vo.userhead}" alt="{$vo.username}">
+</a>
+<h2 class="tpt-tip"><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a>
+{if condition="$vo['settop'] eq 1"}<span class="tpt-tip-stick">置顶</span>{/if}
+{if condition="$vo['choice'] eq 1"}<span class="tpt-tip-jing">精帖</span>{/if}
+</h2>
+<p>
+<span><a href="__ROOT__/home/{$vo.userid}.html">{$vo.username}</a></span>
+<span class="tpt-none-768">{$vo.time|date="Y-m-d h:i:s",###}</span>
+<span class="tpt-none-768"><a href="__ROOT__/view/{$vo.cid}.html">{$vo.name}</a></span>
+<span class="tpt-list-hint" style="padding-right: 0;"> 
+<i class="iconfont" title="回答">&#xe655;</i> {$vo.reply}
+<i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}
+</span>
+</p>
+</li>
+{/volist}
+</ul>
+{/if}
+
+<ul class="tpt-list">
+{volist name="tptcs" id="vo"}
+<li class="tpt-list-li">
+<a href="__ROOT__/home/{$vo.userid}.html" class="tpt-list-avatar">
+<img src="__UPLO__{$vo.userhead}" alt="{$vo.username}">
+</a>
+<h2 class="tpt-tip"><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a>
+{if condition="$vo['settop'] eq 1"}<span class="tpt-tip-stick">置顶</span>{/if}
+{if condition="$vo['choice'] eq 1"}<span class="tpt-tip-jing">精帖</span>{/if}
+</h2>
+<p>
+<span><a href="__ROOT__/home/{$vo.userid}.html">{$vo.username}</a></span>
+<span class="tpt-none-768">{$vo.time|date="Y-m-d h:i:s",###}</span>
+<span class="tpt-none-768"><a href="__ROOT__/view/{$vo.cid}.html">{$vo.name}</a></span>
+<span class="tpt-list-hint" style="padding-right: 0;"> 
+<i class="iconfont" title="回答">&#xe655;</i> {$vo.reply}
+<i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}
+</span>
+</p>
+</li>
+{/volist}
+</ul>
+<div class="pages">{$tptcs->render()}</div>
+</div>
+</div>
+
+<div class="tpt-mr-3">
+<div class="tpt-con2">
+{include file="index/right"}
+</div>
+</div>
+
+</div>
+{include file="index/footer"}
+</body>
+</html>

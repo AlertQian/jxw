@@ -3,7 +3,7 @@
 		<div class="tpt-md-1">
 			<div class="tpt-mds">
 				<p class="bq">
-Copyright© 2014-2017
+                    Copyright© 2014-2017
 					<span class="pipe">|</span>
                     <a class="banquan" target="_blank" href="{:config('web.WEB_COM')}">Powered by {:config('web.WEB_AUT')}</a>
 					<span class="tpt-none-768 tpt-none-1024">
@@ -17,6 +17,7 @@ Copyright© 2014-2017
 		</div>
 	</div>
 </div>
+<!-- <button class="layui-btn layui-btn-danger zanzhu">打赏支持</button>
 <div id="zanzhus" class="tpt-zan cl" style="display: none;">
 <div class="layui-tab">
   <h2>感谢您的支持，我会继续努力的</h2>
@@ -31,7 +32,7 @@ Copyright© 2014-2017
   </ul>
   <h3>打开支付宝或微信扫一扫，即可进行扫码打赏哦</h3>
 </div>
-</div>
+</div> -->
 <script type="text/javascript">
 layui.use(['layer','jquery','element'], function(){
   var layer = layui.layer,
@@ -65,7 +66,7 @@ layui.use(['layer','jquery','element'], function(){
 		end: function(){location.reload();}
 	});
   });
-  jq('#zanzhu').click(function(){    
+  jq('.zanzhu').click(function(){    
        layer.open({
 			type:1,
 			title:'',

@@ -27,6 +27,16 @@ class Index extends Common
         $settop['settop'] = 1;
         $tptc = $content->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->where($settop)->order('f.id desc')->limit(config('web.WEB_FDZ'))->select();
         $tptcs = $content->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->order('f.id desc')->paginate(config('web.WEB_FYS'));
+        $this->assign(array('tptc' => $tptc, 'tptcs' => $tptcs));
+        return tptc();
+    }
+    public function forum()
+    {
+        $content = db('content');
+        $shows['f.shows'] = 1;
+        $settop['settop'] = 1;
+        $tptc = $content->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->where($settop)->order('f.id desc')->limit(config('web.WEB_FDZ'))->select();
+        $tptcs = $content->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->order('f.id desc')->paginate(config('web.WEB_FYS'));
 		$this->assign(array('tptc' => $tptc, 'tptcs' => $tptcs));
 		return tptc();
     }
