@@ -5,59 +5,81 @@
 <meta name="keywords" content="{:config('web.WEB_KEY')}">
 <meta name="description" content="{:config('web.WEB_DES')}">
 {include file="index/header"}
-<link rel="stylesheet" href="__HOME__/css/index.css">
+<link rel="stylesheet" href="__HOME__/css/blog.css">
 <link rel="stylesheet" href="__HOME__/css/right.css">
 <div class="tpt-wp cl">
 <div class="tpt-ml-7">
 <div class="tpt-con1">
-{include file="index/menu"}
-
-{if condition="config('web.WEB_FDZ') neq 0"}
-<ul class="tpt-list">
-{volist name="tptc" id="vo"}
-<li class="tpt-list-li">
-<a href="__ROOT__/home/{$vo.userid}.html" class="tpt-list-avatar">
-<img src="__UPLO__{$vo.userhead}" alt="{$vo.username}">
-</a>
-<h2 class="tpt-tip"><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a>
-{if condition="$vo['settop'] eq 1"}<span class="tpt-tip-stick">置顶</span>{/if}
-{if condition="$vo['choice'] eq 1"}<span class="tpt-tip-jing">精帖</span>{/if}
-</h2>
-<p>
-<span><a href="__ROOT__/home/{$vo.userid}.html">{$vo.username}</a></span>
-<span class="tpt-none-768">{$vo.time|date="Y-m-d h:i:s",###}</span>
-<span class="tpt-none-768"><a href="__ROOT__/view/{$vo.cid}.html">{$vo.name}</a></span>
-<span class="tpt-list-hint" style="padding-right: 0;"> 
-<i class="iconfont" title="回答">&#xe655;</i> {$vo.reply}
-<i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}
-</span>
-</p>
-</li>
-{/volist}
-</ul>
+{if condition="config('web.WEB_FTP') neq 0"}
+<div class="tpt-banner tpt-none-768 cl">
+<div class="layui-carousel" id="banner">
+  <div carousel-item>
+    {volist name="tptb" id="vo"}
+    <div><a target="_blank" href="{$vo.links}"><img src="__UPLO__{$vo.pic}" style="height: 320px;"></a></div>
+	{/volist}
+  </div>
+</div>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  carousel.render({
+    elem: '#banner'
+    ,width: '100%'
+    ,height: '320px'
+    ,interval: 4000
+    ,arrow: 'always'
+  });
+});
+</script>
+</div>
 {/if}
 
-<ul class="tpt-list">
-{volist name="tptcs" id="vo"}
-<li class="tpt-list-li">
-<a href="__ROOT__/home/{$vo.userid}.html" class="tpt-list-avatar">
-<img src="__UPLO__{$vo.userhead}" alt="{$vo.username}">
+<div class="tpt-dingzhi tpt-none-768 tpt-none-1024 tpt-none-1200 cl">
+<h3>顶置推荐</h3>
+<ul>
+<li>
+<a href="/thread/7.html">
+<img src="/uploads/20170522/058eea7197f4c811b2d86e48f4058191_thumb_240_160.jpg" alt="计葵生：从陆金所看金融科技的发展要点与未来">
 </a>
-<h2 class="tpt-tip"><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a>
-{if condition="$vo['settop'] eq 1"}<span class="tpt-tip-stick">置顶</span>{/if}
-{if condition="$vo['choice'] eq 1"}<span class="tpt-tip-jing">精帖</span>{/if}
-</h2>
+<h2><a href="/thread/7.html" title="计葵生：从陆金所看金融科技的发展要点与未来">计葵生：从陆金所看金融科技的发展要点与未来</a></h2>
+</li>
+<li>
+<a href="/thread/3.html">
+<img src="/uploads/20170522/bcbfb625b22faf777e1859cda801d29f_thumb_240_160.jpg" alt="ZEALER布局短视频MCN，优质的泛科技视频都在这里">
+</a>
+<h2><a href="/thread/3.html" title="ZEALER布局短视频MCN，优质的泛科技视频都在这里">ZEALER布局短视频MCN，优质的泛科技视频都在这里</a></h2>
+</li>
+<li>
+<a href="/thread/2.html">
+<img src="/uploads/20170522/933f738aa5481a9d007b802351b17cb8_thumb_240_160.jpg" alt="AAAI协会主席 Rao：中国AI研究进步喜人，创业风气无处不在 | GAIR 2017">
+</a>
+<h2><a href="/thread/2.html" title="AAAI协会主席 Rao：中国AI研究进步喜人，创业风气无处不在 | GAIR 2017">AAAI协会主席 Rao：中国AI研究进步喜人，创业风气无处不在 | GAIR 2017</a></h2>
+</li>
+</ul>
+</div>
+
+<div class="tpt-none-768 tpt-none-1024 tpt-none-1200 tpt-bottom"></div>
+
+<ul class="tpt-list">
+<h3>最新文章</h3>
+<li class="tpt-list-li">
+<div class="mod-angle">热</div><a href="/thread/8.html" class="tpt-list-avatar">
+<img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a_thumb_240_160.jpg" alt="从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017">
+</a>
+<h2 class="tpt-tip"><a href="/thread/8.html">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
 <p>
-<span><a href="__ROOT__/home/{$vo.userid}.html">{$vo.username}</a></span>
-<span class="tpt-none-768">{$vo.time|date="Y-m-d h:i:s",###}</span>
-<span class="tpt-none-768"><a href="__ROOT__/view/{$vo.cid}.html">{$vo.name}</a></span>
+<span><a href="/home/8.html"><img src="/uploads/20170401/7.jpg" alt="再贱就再见">再贱就再见</a></span>
+<span class="tpt-none-768">2017-05-22 03:28:17</span>
 <span class="tpt-list-hint" style="padding-right: 0;"> 
-<i class="iconfont" title="回答">&#xe655;</i> {$vo.reply}
-<i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}
-</span>
+<i class="iconfont" title="回答">&#xe655;</i> 21<i class="iconfont" title="人气">&#xe6c0;</i> 1289</span>
+</p>
+<p class="tpt-none-768">
+谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
+</p>
+<p style="padding-top: 0;line-height: 20px;">
+<span class="tpt-none-768 tpt-none-1024 tpt-none-1200 y" style="padding-right: 0;"><a href="/view/6.html">虚拟现实</a></span>
 </p>
 </li>
-{/volist}
 </ul>
 <div class="pages">{$tptcs->render()}</div>
 </div>
@@ -65,7 +87,7 @@
 
 <div class="tpt-mr-3">
 <div class="tpt-con2">
-{include file="index/right"}
+{include file="school/right"}
 </div>
 </div>
 

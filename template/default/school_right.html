@@ -1,0 +1,42 @@
+<div class="tpt-stat cl">
+<div class="tpt-tsearch cl">
+<form action="/search.html">
+<input placeholder="搜索" type="text" name="ks" value="" required="" lay-verify="required" autocomplete="off">
+<button><i class="iconfont"></i></button>
+</form>
+</div>
+<div class="tpt-stat-list cl">
+<ul>
+<li><span>12</span>驾校总数</li>
+<li style="border-left: 1px solid #f1f1f1;border-right: 1px solid #f1f1f1;"><span>211</span>会员总数</li>
+<li><span>42</span>评论总数</li>
+</ul>
+</div>
+<div class="tpt-grid-org cl">
+<h2>欢迎打赏投稿</h2>
+<a style="border: 1px solid #5FB878;background-color: #5FB878;color: #FFF;padding: 0 28px;" id="tougao" class="layui-btn">我要投稿</a>
+<a style="border: 1px solid #FF5722;background-color: #FF5722;color: #FFF;padding: 0 28px;" id="zanzhu" class="layui-btn">我要打赏</a>
+</div>
+</div>
+
+{if condition="config('web.WEB_FTJ') neq 0"}
+<div class="tpt-sidebar cl">
+	<h3>热门推荐</h3>
+	<ul class="tpt-c cl">
+		{volist name="tptf" id="vo"}
+		<li><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a><span><i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}<span></li>
+		{/volist}
+	</ul>
+</div>
+{/if}
+
+{if condition="config('web.WEB_FJX') neq 0"}
+<div class="tpt-sidebar cl">
+	<h3>精选内容</h3>
+	<ul class="tpt-c cl">
+	    {volist name="tpte" id="vo"}
+		<li><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a><span><i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}<span></li>
+		{/volist}
+	</ul>
+</div>
+{/if}
