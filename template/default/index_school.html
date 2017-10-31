@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>{:config('web.WEB_AUT')}</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+{include file="index/header"}
+<link rel="stylesheet" href="__HOME__/css/thread.css">
+<link rel="stylesheet" href="__HOME__/css/right.css">
+<link rel="stylesheet" href="__ADMIN__/wangEditor/css/wangEditor.min.css">
+<script type="text/javascript" src="__ADMIN__/wangEditor/js/wangEditor.min.js"></script>
+<style type="text/css">
+.wangEditor-menu-container .menu-item a {padding: 12px 0;}
+.wangEditor-menu-container .menu-item {height: 37px;width: 37px;}
+.wangEditor-menu-container .menu-group {padding: 0;}
+.wangEditor-container {border: 1px solid #e6e6e6;}
+.pagination {margin: 0;}
+.layui-form-item {margin: 15px 0;}
+.wangEditor-container .wangEditor-txt img {max-width: 100%;height: auto;}
+</style>
+<div class="tpt-wp cl">
+	<div class="tpt-md-1 cl">
+		<div class="tpt-ml-3 tpt-block-768">
+			<img src="/uploads/20170522/d2ce50908375898206cccbc610917155.jpg" style="width: 100%" />
+		</div>
+		<div class="tpt-mr-7">
+		    <div class="content">
+		    <div class="tpt-thread">		    
+		    <h1>运销驾校</h1>
+		    <div class="wangEditor-txt">
+		    学校介绍： 国家级重点技工学校江西赣州育才学校位于千里赣江第一城、国家历史文化名城赣州市。学校占地面积100亩，建筑面积约为11万平方位于赣州市中心城区，东临市政府、体育中心、市图书馆、博物馆；西接中央生态公园、市游泳馆；北临黄金广场；南望赣州三中。学校环境清幽、绿树成荫、薰衣草似锦，是求知成才的理想之地。 &lt;div&gt; 江西赣州育才学校，始创于1988年。2003年6月，被江西省劳动和社会保障厅批准设立为&amp;ldquo;江西赣州育才学校&amp;rdquo;，成为江西省首家民办学校。省级综合性高层次民办技能培训院校。2009年又被赣</div>
+		    <div class="detail-info cl">
+		        <div class="tpt-wp">
+		        <div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">联系人：</em></span>
+					<span>李教练</span>
+				</div>
+				<div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">Q　Q：</em></span>
+					<span class=""><em style="font-style: normal;font-size: 18px;color: #4f99cf">1679026896</em></span>
+				</div>
+				</div>
+				<div class="tpt-wp">
+		        <div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">手机号：</em></span>
+					<span class=""><em style="font-style: normal;font-size: 18px;color: #FF9E3F">15007044397</em></span>
+				</div>
+				<div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">地　址：</em></span>
+					<span class="">南城县沙州镇黄师银三角</span>
+				</div>
+				</div>
+		    </div>	
+		    </div>
+		    </div>
+		</div>
+	</div>
+	<div class="tpt-md-1 tpt-mat-10">
+		<div class="content">
+			<div id="pinglun" class="tpt-tag-box cl"><span>驾校风采</span></div>
+		</div>
+		<div class="content tpt-mat-10">
+			<div id="pinglun" class="tpt-tag-box cl"><span>在线报名</span></div>
+		</div>
+		<div class="content tpt-mat-10">
+		    {if condition="config('web.WEB_FHF') neq 0"}
+		    <div class="fly-panel detail-box">
+			<div id="pinglun" class="tpt-tag-box cl"><span>发表评论</span></div>
+			<div class="cmt-item2 layui-form layui-form-pane">
+			<form>
+			<input type="hidden" value="" name="mid">
+			<div class="layui-form-item layui-form-text">
+			<div class="layui-input-block">
+			<textarea id="textarea" name="content" required lay-verify="content" style="height:150px;width: 100%;"></textarea>
+			</div>
+			</div>
+			<div class="layui-form-item">
+			<button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="comment_add">提交评论</button>
+			</div>
+			</form>
+			</div>
+			<div class="tpt-tag-tit cl"><h2>0 个回复</h2></div>
+			
+			</div>
+			{/if}
+		</div>
+	</div>
+</div>                                                                           
+<script type="text/javascript">
+var editor = new wangEditor('textarea');
+editor.config.uploadImgUrl = '{:url("index/upload/doUploadPic")}';
+editor.config.uploadImgFileName = 'FileName';
+var W = document.documentElement.clientWidth || document.body.clientWidth;
+if(W < 1008){
+	editor.config.menus = [
+	'bold',
+	'underline',
+	'italic',
+	'forecolor',
+	'link',
+	'fullscreen',
+	];
+}else{
+	editor.config.menus = [
+	'bold',
+	'underline',
+	'italic',
+	'strikethrough',
+	'forecolor',
+	'link',
+	'unlink',
+	'emotion',
+	'img',
+	'insertcode',
+	'fullscreen',
+	];
+}
+editor.config.pasteText = true;
+editor.create();
+</script>
+{include file="index/footer"}
+</body>
+</html>

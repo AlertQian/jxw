@@ -114,4 +114,9 @@ class Index extends Common
             }
         }
     }
+
+    public function school()
+    {        
+        return tptc();     
+    }
 }

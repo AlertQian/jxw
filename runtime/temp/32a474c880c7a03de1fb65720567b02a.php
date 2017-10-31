@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:34:"./template/default/index_view.html";i:1505717520;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:35:"./template/default/index_right.html";i:1509350244;s:36:"./template/default/index_footer.html";i:1509091689;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:36:"./template/default/index_school.html";i:1509440879;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:36:"./template/default/index_footer.html";i:1509091689;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>  
-<title><?php echo $tpti['name']; ?> - <?php echo config('web.WEB_TIT'); ?></title>
-<meta name="keywords" content="<?php echo config('web.WEB_KEY'); ?>">
-<meta name="description" content="<?php echo config('web.WEB_DES'); ?>">
+<title><?php echo config('web.WEB_AUT'); ?></title>
+<meta name="keywords" content="">
+<meta name="description" content="">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,116 +100,119 @@ $("#menu_list").hide();
 });
 </script>
 
-<link rel="stylesheet" href="__HOME__/css/index.css">
+<link rel="stylesheet" href="__HOME__/css/thread.css">
 <link rel="stylesheet" href="__HOME__/css/right.css">
+<link rel="stylesheet" href="__ADMIN__/wangEditor/css/wangEditor.min.css">
+<script type="text/javascript" src="__ADMIN__/wangEditor/js/wangEditor.min.js"></script>
+<style type="text/css">
+.wangEditor-menu-container .menu-item a {padding: 12px 0;}
+.wangEditor-menu-container .menu-item {height: 37px;width: 37px;}
+.wangEditor-menu-container .menu-group {padding: 0;}
+.wangEditor-container {border: 1px solid #e6e6e6;}
+.pagination {margin: 0;}
+.layui-form-item {margin: 15px 0;}
+.wangEditor-container .wangEditor-txt img {max-width: 100%;height: auto;}
+</style>
 <div class="tpt-wp cl">
-<div class="tpt-ml-7">
-<div class="tpt-con1">
-
-<div class="tpt-headh3 cl"><h3><?php echo $tpti['name']; ?></h3></div>
-<ul class="tpt-list">
-<?php if(is_array($tptc) || $tptc instanceof \think\Collection || $tptc instanceof \think\Paginator): $i = 0; $__LIST__ = $tptc;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-<li class="tpt-list-li">
-<a href="__ROOT__/home/<?php echo $vo['userid']; ?>.html" class="tpt-list-avatar">
-<img src="__UPLO__<?php echo $vo['userhead']; ?>" alt="<?php echo $vo['username']; ?>">
-</a>
-<h2 class="tpt-tip"><a href="__ROOT__/thread/<?php echo $vo['id']; ?>.html"><?php echo $vo['title']; ?></a>
-<?php if($vo['settop'] == 1): ?><span class="tpt-tip-stick">置顶</span><?php endif; if($vo['choice'] == 1): ?><span class="tpt-tip-jing">精帖</span><?php endif; ?>
-</h2>
-<p>
-<span><a href="__ROOT__/home/<?php echo $vo['userid']; ?>.html"><?php echo $vo['username']; ?></a></span>
-<span class="tpt-none-768"><?php echo date("Y-m-d h:i:s",$vo['time']); ?></span>
-<span class="tpt-none-768"><a href="__ROOT__/view/<?php echo $vo['cid']; ?>.html"><?php echo $vo['name']; ?></a></span>
-<span class="tpt-list-hint" style="padding-right: 0;"> 
-<i class="iconfont" title="回答">&#xe655;</i> <?php echo $vo['reply']; ?>
-<i class="iconfont" title="人气">&#xe6c0;</i> <?php echo $vo['view']; ?>
-</span>
-</p>
-</li>
-<?php endforeach; endif; else: echo "" ;endif; ?>
-</ul>
-<div class="pages"><?php echo $tptc->render(); ?></div>
-</div>
-</div>
-
-<div class="tpt-mr-3">
-<div class="tpt-con2">
-<?php if(config('web.WEB_FHY') != 0): ?>
-<div class="leifeng-rank tpt-sidebar cl">
-	<h3>最新会员</h3>
-	<dl class="cl">
-	<?php if(is_array($tptm) || $tptm instanceof \think\Collection || $tptm instanceof \think\Paginator): $i = 0; $__LIST__ = $tptm;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <dd><a href="__ROOT__/home/<?php echo $vo['userid']; ?>.html"><img src="<?php echo $vo['userhead']; ?>" alt="<?php echo $vo['username']; ?>"><cite><?php echo $vo['point']; ?></cite><i><?php echo $vo['username']; ?></i></a></dd>
-	<?php endforeach; endif; else: echo "" ;endif; ?>
-</dl>
-</div>
-<?php endif; if(config('web.WEB_FTP') != 0): ?>
-<div class="tpt-banner tpt-none-768 cl">
-<div class="layui-carousel" id="banner">
-  <div carousel-item>
-    <?php if(is_array($tptb) || $tptb instanceof \think\Collection || $tptb instanceof \think\Paginator): $i = 0; $__LIST__ = $tptb;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-    <div><a target="_blank" href="<?php echo $vo['links']; ?>"><img src="__UPLO__<?php echo $vo['pic']; ?>"></a></div>
-	<?php endforeach; endif; else: echo "" ;endif; ?>
-  </div>
-</div>
-<script>
-layui.use('carousel', function(){
-  var carousel = layui.carousel;
-  carousel.render({
-    elem: '#banner'
-    ,width: '100%'
-    ,height: '180px'
-    ,arrow: 'always'
-  });
-});
+	<div class="tpt-md-1 cl">
+		<div class="tpt-ml-3 tpt-block-768">
+			<img src="/uploads/20170522/d2ce50908375898206cccbc610917155.jpg" style="width: 100%" />
+		</div>
+		<div class="tpt-mr-7">
+		    <div class="content">
+		    <div class="tpt-thread">		    
+		    <h1>运销驾校</h1>
+		    <div class="wangEditor-txt">
+		    学校介绍： 国家级重点技工学校江西赣州育才学校位于千里赣江第一城、国家历史文化名城赣州市。学校占地面积100亩，建筑面积约为11万平方位于赣州市中心城区，东临市政府、体育中心、市图书馆、博物馆；西接中央生态公园、市游泳馆；北临黄金广场；南望赣州三中。学校环境清幽、绿树成荫、薰衣草似锦，是求知成才的理想之地。 &lt;div&gt; 江西赣州育才学校，始创于1988年。2003年6月，被江西省劳动和社会保障厅批准设立为&amp;ldquo;江西赣州育才学校&amp;rdquo;，成为江西省首家民办学校。省级综合性高层次民办技能培训院校。2009年又被赣</div>
+		    <div class="detail-info cl">
+		        <div class="tpt-wp">
+		        <div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">联系人：</em></span>
+					<span>李教练</span>
+				</div>
+				<div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">Q　Q：</em></span>
+					<span class=""><em style="font-style: normal;font-size: 18px;color: #4f99cf">1679026896</em></span>
+				</div>
+				</div>
+				<div class="tpt-wp">
+		        <div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">手机号：</em></span>
+					<span class=""><em style="font-style: normal;font-size: 18px;color: #FF9E3F">15007044397</em></span>
+				</div>
+				<div class="tpt-md-2 tpt-mat-10">
+					<span class=""><em style="font-style: normal;">地　址：</em></span>
+					<span class="">南城县沙州镇黄师银三角</span>
+				</div>
+				</div>
+		    </div>	
+		    </div>
+		    </div>
+		</div>
+	</div>
+	<div class="tpt-md-1 tpt-mat-10">
+		<div class="content">
+			<div id="pinglun" class="tpt-tag-box cl"><span>驾校风采</span></div>
+		</div>
+		<div class="content tpt-mat-10">
+			<div id="pinglun" class="tpt-tag-box cl"><span>在线报名</span></div>
+		</div>
+		<div class="content tpt-mat-10">
+		    <?php if(config('web.WEB_FHF') != 0): ?>
+		    <div class="fly-panel detail-box">
+			<div id="pinglun" class="tpt-tag-box cl"><span>发表评论</span></div>
+			<div class="cmt-item2 layui-form layui-form-pane">
+			<form>
+			<input type="hidden" value="" name="mid">
+			<div class="layui-form-item layui-form-text">
+			<div class="layui-input-block">
+			<textarea id="textarea" name="content" required lay-verify="content" style="height:150px;width: 100%;"></textarea>
+			</div>
+			</div>
+			<div class="layui-form-item">
+			<button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="comment_add">提交评论</button>
+			</div>
+			</form>
+			</div>
+			<div class="tpt-tag-tit cl"><h2>0 个回复</h2></div>
+			
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>                                                                           
+<script type="text/javascript">
+var editor = new wangEditor('textarea');
+editor.config.uploadImgUrl = '<?php echo url("index/upload/doUploadPic"); ?>';
+editor.config.uploadImgFileName = 'FileName';
+var W = document.documentElement.clientWidth || document.body.clientWidth;
+if(W < 1008){
+	editor.config.menus = [
+	'bold',
+	'underline',
+	'italic',
+	'forecolor',
+	'link',
+	'fullscreen',
+	];
+}else{
+	editor.config.menus = [
+	'bold',
+	'underline',
+	'italic',
+	'strikethrough',
+	'forecolor',
+	'link',
+	'unlink',
+	'emotion',
+	'img',
+	'insertcode',
+	'fullscreen',
+	];
+}
+editor.config.pasteText = true;
+editor.create();
 </script>
-</div>
-<?php endif; ?>
-
-
-<div class="tpt-sidebar cl">
-	<h3>热门标签</h3>
-	<div class="tpt-f cl">
-     <?php if(is_array($tagss) || $tagss instanceof \think\Collection || $tagss instanceof \think\Paginator): $i = 0; $__LIST__ = $tagss;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$tag): $mod = ($i % 2 );++$i;?>
-	 <a href="__ROOT__/tags.html?id=<?php echo $tag; ?>"><?php echo $tag; ?></a>
-	 <?php endforeach; endif; else: echo "" ;endif; ?>
-  </div>
-</div>
-
-<?php if(config('web.WEB_FTJ') != 0): ?>
-<div class="tpt-sidebar cl">
-	<h3>热门推荐</h3>
-	<ul class="tpt-c cl">
-		<?php if(is_array($tptf) || $tptf instanceof \think\Collection || $tptf instanceof \think\Paginator): $i = 0; $__LIST__ = $tptf;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-		<li><a href="__ROOT__/thread/<?php echo $vo['id']; ?>.html"><?php echo $vo['title']; ?></a><span><i class="iconfont" title="人气">&#xe6c0;</i> <?php echo $vo['view']; ?><span></li>
-		<?php endforeach; endif; else: echo "" ;endif; ?>
-	</ul>
-</div>
-<?php endif; if(config('web.WEB_FJX') != 0): ?>
-<div class="tpt-sidebar cl">
-	<h3>精选内容</h3>
-	<ul class="tpt-c cl">
-	    <?php if(is_array($tpte) || $tpte instanceof \think\Collection || $tpte instanceof \think\Paginator): $i = 0; $__LIST__ = $tpte;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-		<li><a href="__ROOT__/thread/<?php echo $vo['id']; ?>.html"><?php echo $vo['title']; ?></a><span><i class="iconfont" title="人气">&#xe6c0;</i> <?php echo $vo['view']; ?><span></li>
-		<?php endforeach; endif; else: echo "" ;endif; ?>
-	</ul>
-</div>
-<?php endif; ?>
-
-<div class="tpt-sidebar cl">
-	<h3>友情连接</h3>
-	<ul class="tpt-e cl">
-		<?php if(is_array($tptl) || $tptl instanceof \think\Collection || $tptl instanceof \think\Paginator): $i = 0; $__LIST__ = $tptl;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-		<li><a target="_blank" href="<?php echo $vo['links']; ?>"><?php echo $vo['name']; ?></a></li>
-		<?php endforeach; endif; else: echo "" ;endif; ?>
-	</ul>
-</div>
-
-
-</div>
-</div>
-
-</div>
 <div class="tpt-footer footer tpt-mat-30 cl">
 	<div class="tpt-wp cl">
 		<div class="tpt-md-1">

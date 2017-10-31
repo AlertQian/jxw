@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:35:"./template/default/index_index.html";i:1509355130;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:36:"./template/default/school_right.html";i:1509352143;s:36:"./template/default/index_footer.html";i:1509091689;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:35:"./template/default/index_index.html";i:1509430722;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:36:"./template/default/school_right.html";i:1509352143;s:36:"./template/default/index_footer.html";i:1509091689;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>  
