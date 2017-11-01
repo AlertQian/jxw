@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:36:"./template/default/index_school.html";i:1509440879;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:36:"./template/default/index_footer.html";i:1509091689;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:36:"./template/default/index_school.html";i:1509523439;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:36:"./template/default/index_footer.html";i:1509508525;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>  
@@ -125,7 +125,7 @@ $("#menu_list").hide();
 		    <div class="wangEditor-txt">
 		    学校介绍： 国家级重点技工学校江西赣州育才学校位于千里赣江第一城、国家历史文化名城赣州市。学校占地面积100亩，建筑面积约为11万平方位于赣州市中心城区，东临市政府、体育中心、市图书馆、博物馆；西接中央生态公园、市游泳馆；北临黄金广场；南望赣州三中。学校环境清幽、绿树成荫、薰衣草似锦，是求知成才的理想之地。 &lt;div&gt; 江西赣州育才学校，始创于1988年。2003年6月，被江西省劳动和社会保障厅批准设立为&amp;ldquo;江西赣州育才学校&amp;rdquo;，成为江西省首家民办学校。省级综合性高层次民办技能培训院校。2009年又被赣</div>
 		    <div class="detail-info cl">
-		        <div class="tpt-wp">
+		        <div class="cl">
 		        <div class="tpt-md-2 tpt-mat-10">
 					<span class=""><em style="font-style: normal;">联系人：</em></span>
 					<span>李教练</span>
@@ -135,7 +135,7 @@ $("#menu_list").hide();
 					<span class=""><em style="font-style: normal;font-size: 18px;color: #4f99cf">1679026896</em></span>
 				</div>
 				</div>
-				<div class="tpt-wp">
+				<div class="cl">
 		        <div class="tpt-md-2 tpt-mat-10">
 					<span class=""><em style="font-style: normal;">手机号：</em></span>
 					<span class=""><em style="font-style: normal;font-size: 18px;color: #FF9E3F">15007044397</em></span>
@@ -153,9 +153,51 @@ $("#menu_list").hide();
 	<div class="tpt-md-1 tpt-mat-10">
 		<div class="content">
 			<div id="pinglun" class="tpt-tag-box cl"><span>驾校风采</span></div>
+			<div class="tpt-banner cl">
+			<div class="layui-carousel" id="banner">
+			  <div carousel-item> 
+			     <div><a target="_blank" href=""><img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a.jpg" style="height: 380px;"></a></div>
+			     <div><a target="_blank" href=""><img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a.jpg" style="height: 380px;"></a></div>
+			     <div><a target="_blank" href=""><img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a.jpg" style="height: 380px;"></a></div>
+			  </div>
+			</div>
+			<script>
+			layui.use('carousel', function(){
+			  var carousel = layui.carousel;
+			  carousel.render({
+			    elem: '#banner'
+			    ,width: '100%'
+			    ,height: '380px'
+			    ,interval: 4000
+			    ,arrow: 'hover'
+			  });
+			});
+			</script>
+			</div>
 		</div>
 		<div class="content tpt-mat-10">
 			<div id="pinglun" class="tpt-tag-box cl"><span>在线报名</span></div>
+			<form class="layui-form">
+			<div class="layui-form-item">
+		    <label class="layui-form-label">联系人</label>
+		    <div class="layui-input-block">
+			  <input type="text" name="name" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+			</div>
+			</div>
+
+			<div class="layui-form-item">
+			<label class="layui-form-label">联系电话</label>
+			<div class="layui-input-block">
+			  <input type="tel" name="phone" lay-verify="phone" placeholder="电话号码" autocomplete="off" class="layui-input">
+			</div>
+			</div>
+
+			<div class="layui-form-item">
+			<div class="layui-input-block">
+			<button class="layui-btn" lay-submit="" lay-filter="school_add">立即提交</button>
+			</div>
+			</div>
+			</form>
 		</div>
 		<div class="content tpt-mat-10">
 		    <?php if(config('web.WEB_FHF') != 0): ?>
@@ -232,77 +274,5 @@ editor.create();
 		</div>
 	</div>
 </div>
-<!-- <button class="layui-btn layui-btn-danger zanzhu">打赏支持</button>
-<div id="zanzhus" class="tpt-zan cl" style="display: none;">
-<div class="layui-tab">
-  <h2>感谢您的支持，我会继续努力的</h2>
-  <div class="layui-tab-content">
-    <div class="layui-tab-item layui-show"><img src="__HOME__/img/alipay.png"></div>
-    <div class="layui-tab-item"><img src="__HOME__/img/weipay.png"></div>
-	<p>扫码打赏，账号：晴天（*洪）</p>
-  </div>
-  <ul class="layui-tab-title">
-    <li class="layui-this"><span class="zanbox"></span><img src="__HOME__/img/ali.jpg" alt="支付宝"></li>
-    <li><span class="zanbox"></span><img src="__HOME__/img/wei.jpg" alt="微信"></li>
-  </ul>
-  <h3>打开支付宝或微信扫一扫，即可进行扫码打赏哦</h3>
-</div>
-</div> -->
-<script type="text/javascript">
-layui.use(['layer','jquery','element'], function(){
-  var layer = layui.layer,
-  element = layui.element,
-  jq = layui.jquery;
-  jq('.logout').click(function(){
-    loading = layer.load(2, {
-      shade: [0.2,'#000']
-    });
-    jq.getJSON('<?php echo url("index/login/logout"); ?>',function(data){
-      if(data.code == 200){
-        layer.close(loading);
-        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
-          location.reload();
-        });
-      }else{
-        layer.close(loading);
-        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
-      }
-    });
-  });
-  jq('.login').click(function(){
-   layer.open({
-		type: 2,
-		title: 'QQ登陆',
-		maxmin: false,
-		shadeClose: true,
-		shade: 0.1,
-		area: ['500px', '500px'],
-		content: '<?php echo config("web.WEB_COM"); ?>/user/qq.html',
-		end: function(){location.reload();}
-	});
-  });
-  jq('.zanzhu').click(function(){    
-       layer.open({
-			type:1,
-			title:'',
-			shadeClose:true,
-			area:['450px','400px'],
-			content:$('#zanzhus')
-	   });
-  });
-  jq('#tougao').click(function(){
-	var exp = "<?php echo \think\Session::get('validate'); ?>"
-	if(exp == ""){
-	    layer.msg('亲！请登录', {icon: 2, anim: 6, time: 1000});
-	}else{
-		if('<?php echo config("web.WEB_ADD"); ?>' == 1 && '<?php echo $tptuser['status']; ?>' == 1){
-		   location.href = '__ROOT__/add.html';
-		}else{
-		   layer.msg('已关闭投稿', {icon: 2, anim: 6, time: 1000});
-		}
-	}
-  });
-})
-</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:35:"./template/default/index_index.html";i:1509430722;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:36:"./template/default/school_right.html";i:1509352143;s:36:"./template/default/index_footer.html";i:1509091689;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:35:"./template/default/index_index.html";i:1509506491;s:36:"./template/default/index_header.html";i:1506500650;s:37:"./template/default/public_gradeh.html";i:1504321935;s:36:"./template/default/school_right.html";i:1509352143;s:36:"./template/default/index_footer.html";i:1509091689;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>  
@@ -106,7 +106,7 @@ $("#menu_list").hide();
 <div class="tpt-ml-7">
 <div class="tpt-con1">
 <?php if(config('web.WEB_FTP') != 0): ?>
-<div class="tpt-banner tpt-none-768 cl">
+<div class="tpt-banner cl">
 <div class="layui-carousel" id="banner">
   <div carousel-item>
     <?php if(is_array($tptb) || $tptb instanceof \think\Collection || $tptb instanceof \think\Paginator): $i = 0; $__LIST__ = $tptb;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
