@@ -30,6 +30,17 @@
     </div>
   </div>
   
+  <div class="layui-form-item" style="width: 300px;">
+    <label class="layui-form-label">所在地区</label>
+    <div class="layui-input-block">
+      <select name="tid">
+    {volist name="tptc" id="vo"}
+    <option value="{$vo.id}">{$vo.name}</option>
+    {/volist}
+    </select>
+    </div>
+  </div>
+
   <div class="layui-form-item">
     <label class="layui-form-label">形象图</label>
 	  <button type="button" class="layui-btn" id="imag"><i class="layui-icon">&#xe67c;</i>上传形象图</button>

@@ -26,6 +26,9 @@ class School extends Common
                 return tptb('添加失败');
             }
         }
+        $category = db('category');
+        $tptc = $category->where("tid != 0")->where('type',2)->select();
+        $this->assign('tptc', $tptc);
     	return tptc();
     }
 
@@ -47,7 +50,9 @@ class School extends Common
  			$imgsarr=explode(',', $imgs);
         	$this->assign('imgsarr', $imgsarr);
         }
-        $this->assign('tptc', $tptc);
+        $category = db('category');
+        $tptcat = $category->where("tid != 0")->where('type',2)->select();
+        $this->assign(array('tptc' => $tptc, 'tptcat' => $tptcat));
         return tptc();
 
     }

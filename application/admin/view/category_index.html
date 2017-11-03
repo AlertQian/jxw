@@ -28,8 +28,8 @@
 <td align="center">{$vo.id}</td>
 <td style="padding-left: 20px;">{if condition="$vo['level'] neq 0"}|----------{/if}{$vo.name}</td>
 <td align="center">
-{if condition="$vo['type'] eq 1"}默认类型{/if}
-{if condition="$vo['type'] eq 2"}其他类型{/if}
+{if condition="$vo['type'] eq 1"}其他类型{/if}
+{if condition="$vo['type'] eq 2"}地区类型{/if}
 </td>
 <td align="center">
 <a change="{$vo.id}" onclick="changeshows(this);" {if condition="$vo['shows'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
