@@ -18,6 +18,7 @@ class School extends Common
     	$school=new SchoolModel();
     	if (request()->isPost()) {
             $data = input('post.');
+            $data['uid'] = 1;
             $data['addtime'] = time();
             $data['content'] = remove_xss(input('content'));
             if ($school->add($data)) {

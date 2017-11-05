@@ -11,7 +11,7 @@
 <div class="tpt-ml-7">
 <div class="tpt-con1">
 {if condition="config('web.WEB_FTP') neq 0"}
-<div class="tpt-banner cl">
+<div class="tpt-banner tpt-none-768 cl">
 <div class="layui-carousel" id="banner">
   <div carousel-item>
     {volist name="tptb" id="vo"}
@@ -32,54 +32,76 @@ layui.use('carousel', function(){
 });
 </script>
 </div>
+<!-- 在手机页面下 -->
+<div class="tpt-banner tpt-none-1024 tpt-none-1200 tpt-none-1920 cl">
+<div class="layui-carousel" id="banners">
+  <div carousel-item>
+    {volist name="tptb" id="vo"}
+    <div><a target="_blank" href="{$vo.links}"><img src="__UPLO__{$vo.pic}" style="height: 180px;"></a></div>
+	{/volist}
+  </div>
+</div>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  carousel.render({
+    elem: '#banners'
+    ,width: '100%'
+    ,height: '180px'
+    ,interval: 4000
+    ,arrow: 'always'
+  });
+});
+</script>
+</div>
 {/if}
 
+{if condition="config('web.WEB_FDZ') neq 0"}
 <div class="tpt-dingzhi tpt-none-768 tpt-none-1024 tpt-none-1200 cl">
 <h3>顶置推荐</h3>
 <ul>
+{volist name="tptc" id="vo"}
 <li>
-<a href="/thread/7.html">
-<img src="/uploads/20170522/058eea7197f4c811b2d86e48f4058191_thumb_240_160.jpg" alt="计葵生：从陆金所看金融科技的发展要点与未来">
+<a href="{:url('index/school',['id'=>$vo.id])}">
+<img src="{$vo.pic}" alt="{$vo.title}">
 </a>
-<h2><a href="/thread/7.html" title="计葵生：从陆金所看金融科技的发展要点与未来">计葵生：从陆金所看金融科技的发展要点与未来</a></h2>
+<h2><a href="{:url('index/school',['id'=>$vo.id])}" title="{$vo.title}">{$vo.title}</a></h2>
 </li>
-<li>
-<a href="/thread/3.html">
-<img src="/uploads/20170522/bcbfb625b22faf777e1859cda801d29f_thumb_240_160.jpg" alt="ZEALER布局短视频MCN，优质的泛科技视频都在这里">
-</a>
-<h2><a href="/thread/3.html" title="ZEALER布局短视频MCN，优质的泛科技视频都在这里">ZEALER布局短视频MCN，优质的泛科技视频都在这里</a></h2>
-</li>
-<li>
-<a href="/thread/2.html">
-<img src="/uploads/20170522/933f738aa5481a9d007b802351b17cb8_thumb_240_160.jpg" alt="AAAI协会主席 Rao：中国AI研究进步喜人，创业风气无处不在 | GAIR 2017">
-</a>
-<h2><a href="/thread/2.html" title="AAAI协会主席 Rao：中国AI研究进步喜人，创业风气无处不在 | GAIR 2017">AAAI协会主席 Rao：中国AI研究进步喜人，创业风气无处不在 | GAIR 2017</a></h2>
-</li>
+{/volist}
 </ul>
 </div>
-
+{/if}
 <div class="tpt-none-768 tpt-none-1024 tpt-none-1200 tpt-bottom"></div>
 
 <ul class="tpt-list">
 <h3>最新文章</h3>
+{volist name="tptcs" id="vo"}
 <li class="tpt-list-li">
-<div class="mod-angle">热</div><a href="/thread/8.html" class="tpt-list-avatar">
-<img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a_thumb_240_160.jpg" alt="从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017">
+<div class="mod-angle">热</div><a href="{:url('index/school',['id'=>$vo.id])}" class="tpt-list-avatar">
+{if condition="$vo.pic neq ''"}	
+<img src="{$vo.pic}" alt="{$vo.title}">
+{else/}
+<img src="__HOME__/img/1.jpg" alt="暂无缩略图">
+{/if}
 </a>
-<h2 class="tpt-tip"><a href="/thread/8.html">从 I/O 大会看谷歌如何推动 VR/AR 的生态发展和技术边界 | Google I/O 2017</a></h2>
+<h2 class="tpt-tip"><a href="{:url('index/school',['id'=>$vo.id])}">{$vo.title}</a></h2>
 <p>
-<span><a href="/home/8.html"><img src="/uploads/20170401/7.jpg" alt="再贱就再见">再贱就再见</a></span>
-<span class="tpt-none-768">2017-05-22 03:28:17</span>
+<span><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}">{$vo.username}</a></span>
+<span class="tpt-none-768">{$vo.addtime|date="Y-m-d H:i:s",###}</span>
 <span class="tpt-list-hint" style="padding-right: 0;"> 
-<i class="iconfont" title="回答">&#xe655;</i> 21<i class="iconfont" title="人气">&#xe6c0;</i> 1289</span>
+<i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}</span>
 </p>
-<p class="tpt-none-768">
-谷歌的故事一切还要从说起三年前大会上推出纸盒眼镜你可以自己拼装把手机放进去观看度的视频或是玩一款小游戏当时所有人都以为谷歌在跟大家开玩笑后来...
-</p>
+<div class="tpt-none-768">{$vo.content|mb_substr=0,120,'UTF-8'}...</div>
 <p style="padding-top: 0;line-height: 20px;">
 <span class="tpt-none-768 tpt-none-1024 tpt-none-1200 y" style="padding-right: 0;"><a href="/view/6.html">虚拟现实</a></span>
 </p>
+<p style="padding-top: 6px;line-height: 20px;">
+<span class="tpt-none-1024 tpt-none-1200 tpt-none-1920" style="padding-right: 0;">
+	<span style="color: #333;font-size: 12px;">地址：{$vo.address}</span>
+</span>
+</p>
 </li>
+{/volist}
 </ul>
 <div class="pages">{$tptcs->render()}</div>
 </div>

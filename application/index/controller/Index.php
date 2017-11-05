@@ -22,11 +22,11 @@ class Index extends Common
     }
     public function index()
     {
-        $content = db('content');
-        $shows['f.shows'] = 1;
+        $school = db('school');
+        $shows['f.show'] = 1;
         $settop['settop'] = 1;
-        $tptc = $content->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->where($settop)->order('f.id desc')->limit(config('web.WEB_FDZ'))->select();
-        $tptcs = $content->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->order('f.id desc')->paginate(config('web.WEB_FYS'));
+        $tptc = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->where($settop)->order('f.id desc')->limit(config('web.WEB_FDZ'))->select();
+        $tptcs = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->order('f.id desc')->paginate(config('web.WEB_FYS'));
         $this->assign(array('tptc' => $tptc, 'tptcs' => $tptcs));
         return tptc();
     }
@@ -116,7 +116,28 @@ class Index extends Common
     }
 
     public function school()
-    {        
+    {   
+        $id = input('id');
+        if (empty($id)) {
+            return $this->error('亲！你迷路了');
+        } else {
+            $school = db('school');
+            $a = $school->where(['id'=>$id,'show'=>1])->find();
+            $imgs=$a['imgs'];
+            if(!empty($imgs)){
+                $imgsarr=explode(',', $imgs);
+                $this->assign('imgsarr', $imgsarr);
+            }
+            if ($a) {
+                $school->where("id = {$id}")->setInc('view', 1);
+                $tptt = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,c.name,m.userid,m.grades,m.point,m.userhead,m.username,m.usertime,m.userhome,m.description as mdescription,m.sex')->find($id);
+                $tptc = db('comment')->alias('c')->join('member m', 'm.userid=c.uid')->where("fid = $id AND shows = 1")->order('c.id desc')->paginate(config('web.WEB_FHF'));
+                $this->assign(array('tptc' => $tptc, 'tptt' => $tptt));
+                return tptc();
+            } else {
+                return $this->error('亲！你迷路了');
+            }
+        }    
         return tptc();     
     }
 }

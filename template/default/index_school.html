@@ -17,37 +17,37 @@
 .pagination {margin: 0;}
 .layui-form-item {margin: 15px 0;}
 .wangEditor-container .wangEditor-txt img {max-width: 100%;height: auto;}
+.wangEditor-txt p{line-height: 1.8;}
 </style>
 <div class="tpt-wp cl">
 	<div class="tpt-md-1 cl">
 		<div class="tpt-ml-3 tpt-block-768">
-			<img src="/uploads/20170522/d2ce50908375898206cccbc610917155.jpg" style="width: 100%" />
+			<img src="{$tptt.pic}" style="width: 100%" />
 		</div>
 		<div class="tpt-mr-7">
 		    <div class="content">
 		    <div class="tpt-thread">		    
 		    <h1>运销驾校</h1>
-		    <div class="wangEditor-txt">
-		    学校介绍： 国家级重点技工学校江西赣州育才学校位于千里赣江第一城、国家历史文化名城赣州市。学校占地面积100亩，建筑面积约为11万平方位于赣州市中心城区，东临市政府、体育中心、市图书馆、博物馆；西接中央生态公园、市游泳馆；北临黄金广场；南望赣州三中。学校环境清幽、绿树成荫、薰衣草似锦，是求知成才的理想之地。 &lt;div&gt; 江西赣州育才学校，始创于1988年。2003年6月，被江西省劳动和社会保障厅批准设立为&amp;ldquo;江西赣州育才学校&amp;rdquo;，成为江西省首家民办学校。省级综合性高层次民办技能培训院校。2009年又被赣</div>
+		    <div class="wangEditor-txt">{$tptt.content}</div>
 		    <div class="detail-info cl">
 		        <div class="cl">
 		        <div class="tpt-md-2 tpt-mat-10">
 					<span class=""><em style="font-style: normal;">联系人：</em></span>
-					<span>李教练</span>
+					<span>{$tptt.name}</span>
 				</div>
 				<div class="tpt-md-2 tpt-mat-10">
 					<span class=""><em style="font-style: normal;">Q　Q：</em></span>
-					<span class=""><em style="font-style: normal;font-size: 18px;color: #4f99cf">1679026896</em></span>
+					<span class=""><em style="font-style: normal;font-size: 18px;color: #4f99cf">{$tptt.qq}</em></span>
 				</div>
 				</div>
 				<div class="cl">
 		        <div class="tpt-md-2 tpt-mat-10">
 					<span class=""><em style="font-style: normal;">手机号：</em></span>
-					<span class=""><em style="font-style: normal;font-size: 18px;color: #FF9E3F">15007044397</em></span>
+					<span class=""><em style="font-style: normal;font-size: 18px;color: #FF9E3F">{$tptt.phone}</em></span>
 				</div>
 				<div class="tpt-md-2 tpt-mat-10">
 					<span class=""><em style="font-style: normal;">地　址：</em></span>
-					<span class="">南城县沙州镇黄师银三角</span>
+					<span class="">{$tptt.address}</span>
 				</div>
 				</div>
 		    </div>	
@@ -55,15 +55,17 @@
 		    </div>
 		</div>
 	</div>
+	
 	<div class="tpt-md-1 tpt-mat-10">
+		{if condition="isset($imgsarr)"}
 		<div class="content">
 			<div id="pinglun" class="tpt-tag-box cl"><span>驾校风采</span></div>
 			<div class="tpt-banner cl">
 			<div class="layui-carousel" id="banner">
 			  <div carousel-item> 
-			     <div><a target="_blank" href=""><img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a.jpg" style="height: 380px;"></a></div>
-			     <div><a target="_blank" href=""><img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a.jpg" style="height: 380px;"></a></div>
-			     <div><a target="_blank" href=""><img src="/uploads/20170522/ca5c823d63ed0ee6be50e495c0f4511a.jpg" style="height: 380px;"></a></div>
+			  	{volist name="$imgsarr" id="vo"}
+			     <div><a target="_blank" href=""><img src="{$vo}" style="height: 380px;"></a></div>
+			  	{/volist}
 			  </div>
 			</div>
 			<script>
@@ -80,6 +82,7 @@
 			</script>
 			</div>
 		</div>
+		{/if}
 		<div class="content tpt-mat-10">
 			<div id="pinglun" class="tpt-tag-box cl"><span>在线报名</span></div>
 			<form class="layui-form">
