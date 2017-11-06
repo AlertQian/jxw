@@ -62,10 +62,10 @@ layui.use('carousel', function(){
 <ul>
 {volist name="tptc" id="vo"}
 <li>
-<a href="{:url('index/school',['id'=>$vo.id])}">
+<a href="__ROOT__/drschool/{$vo.id}.html">
 <img src="{$vo.pic}" alt="{$vo.title}">
 </a>
-<h2><a href="{:url('index/school',['id'=>$vo.id])}" title="{$vo.title}">{$vo.title}</a></h2>
+<h2><a href="__ROOT__/drschool/{$vo.id}.html" title="{$vo.title}">{$vo.title}</a></h2>
 </li>
 {/volist}
 </ul>
@@ -77,14 +77,14 @@ layui.use('carousel', function(){
 <h3>最新文章</h3>
 {volist name="tptcs" id="vo"}
 <li class="tpt-list-li">
-<div class="mod-angle">热</div><a href="{:url('index/school',['id'=>$vo.id])}" class="tpt-list-avatar">
+<div class="mod-angle">热</div><a href="__ROOT__/drschool/{$vo.id}.html" class="tpt-list-avatar">
 {if condition="$vo.pic neq ''"}	
 <img src="{$vo.pic}" alt="{$vo.title}">
 {else/}
 <img src="__HOME__/img/1.jpg" alt="暂无缩略图">
 {/if}
 </a>
-<h2 class="tpt-tip"><a href="{:url('index/school',['id'=>$vo.id])}">{$vo.title}</a></h2>
+<h2 class="tpt-tip"><a href="__ROOT__/drschool/{$vo.id}.html">{$vo.title}</a></h2>
 <p>
 <span><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}">{$vo.username}</a></span>
 <span class="tpt-none-768">{$vo.addtime|date="Y-m-d H:i:s",###}</span>
@@ -93,7 +93,7 @@ layui.use('carousel', function(){
 </p>
 <div class="tpt-none-768">{$vo.content|mb_substr=0,120,'UTF-8'}...</div>
 <p style="padding-top: 0;line-height: 20px;">
-<span class="tpt-none-768 tpt-none-1024 tpt-none-1200 y" style="padding-right: 0;"><a href="/view/6.html">虚拟现实</a></span>
+<span class="tpt-none-768 tpt-none-1024 tpt-none-1200 y" style="padding-right: 0;"><a href="__ROOT__/area/{$vo.cid}.html">{$vo.name}</a></span>
 </p>
 <p style="padding-top: 6px;line-height: 20px;">
 <span class="tpt-none-1024 tpt-none-1200 tpt-none-1920" style="padding-right: 0;">

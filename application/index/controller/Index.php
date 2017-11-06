@@ -95,6 +95,26 @@ class Index extends Common
             }
         }
     }
+    public function area()
+    {
+        $id = input('id');
+        if (empty($id)) {
+            return $this->error('亲！你迷路了');
+        } else {
+            $category = db('category');
+            $c = $category->where("id = {$id}")->find();
+            if ($c) {
+                $school = db('school');
+                $shows['f.show'] = 1;
+                $tptc = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where("f.tid={$id}")->where($shows)->order('f.id desc')->paginate(config('web.WEB_FYS'));
+				$tpti = db('category')->where("id ={$id}")->find();
+				$this->assign(array('tptc' => $tptc, 'tpti' => $tpti));
+				return tptc();
+            } else {
+                $this->error("亲！你迷路了！");
+            }
+        }
+    }
 	public function thread()
     {
         $id = input('id');

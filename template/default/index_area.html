@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>{:config('web.WEB_TIT')}</title>
+<meta name="keywords" content="{:config('web.WEB_KEY')}">
+<meta name="description" content="{:config('web.WEB_DES')}">
+{include file="index/header"}
+<link rel="stylesheet" href="__HOME__/css/blog.css">
+<link rel="stylesheet" href="__HOME__/css/right.css">
+<div class="tpt-wp cl">
+<div class="tpt-ml-7">
+<div class="tpt-con1">
+
+<div class="tpt-headh3 cl"><h3>{$tpti.name}</h3></div>
+<ul class="tpt-list">
+{volist name="tptc" id="vo"}
+<li class="tpt-list-li">
+<div class="mod-angle">热</div><a href="__ROOT__/drschool/{$vo.id}.html" class="tpt-list-avatar">
+{if condition="$vo.pic neq ''"}	
+<img src="{$vo.pic}" alt="{$vo.title}">
+{else/}
+<img src="__HOME__/img/1.jpg" alt="暂无缩略图">
+{/if}
+</a>
+<h2 class="tpt-tip"><a href="__ROOT__/drschool/{$vo.id}.html">{$vo.title}</a></h2>
+<p>
+<span><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}">{$vo.username}</a></span>
+<span class="tpt-none-768">{$vo.addtime|date="Y-m-d H:i:s",###}</span>
+<span class="tpt-list-hint" style="padding-right: 0;"> 
+<i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}</span>
+</p>
+<div class="tpt-none-768">{$vo.content|mb_substr=0,120,'UTF-8'}...</div>
+<p style="padding-top: 0;line-height: 20px;">
+<span class="tpt-none-768 tpt-none-1024 tpt-none-1200 y" style="padding-right: 0;"><a href="/view/6.html">{$vo.name}</a></span>
+</p>
+<p style="padding-top: 6px;line-height: 20px;">
+<span class="tpt-none-1024 tpt-none-1200 tpt-none-1920" style="padding-right: 0;">
+	<span style="color: #333;font-size: 12px;">地址：{$vo.address}</span>
+</span>
+</p>
+</li>
+{/volist}
+</ul>
+<div class="pages">{$tptc->render()}</div>
+</div>
+</div>
+
+<div class="tpt-mr-3">
+<div class="tpt-con2">
+{include file="school/right"}
+</div>
+</div>
+
+</div>
+{include file="index/footer"}
+</body>
+</html>
