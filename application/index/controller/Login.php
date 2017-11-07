@@ -13,6 +13,7 @@ class Login extends Common
 			} else {
 				$member = db('member');
 				if (request()->isPost()) {
+					$this->check(input('code'));
 					$user = $member->where('usermail', input('usermail'))->where('status', 1)->find();
 					if ($user) {
 						if ($user['password'] == md5(input('password'))) {

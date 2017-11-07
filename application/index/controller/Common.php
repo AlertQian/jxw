@@ -10,4 +10,13 @@ class Common extends Controller
 		$tptuser = db('member')->where('validate', session('validate'))->find();
 		$this->assign(array('tptop' => $tptop, 'tptops' => $tptops, 'tptuser' => $tptuser));
     }
+
+    public function check($code = '')
+    {
+        if (!captcha_check($code)) {
+            $this->error('验证码错误');
+        } else {
+            return true;
+        }
+    }
 }

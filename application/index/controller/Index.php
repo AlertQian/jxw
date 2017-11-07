@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use app\index\model\Enroll as EnrollModel;
 class Index extends Common
 {
     public function _initialize()
@@ -151,7 +152,7 @@ class Index extends Common
             if ($a) {
                 $school->where("id = {$id}")->setInc('view', 1);
                 $tptt = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,c.name,m.userid,m.grades,m.point,m.userhead,m.username,m.usertime,m.userhome,m.description as mdescription,m.sex')->find($id);
-                $tptc = db('comment')->alias('c')->join('member m', 'm.userid=c.uid')->where("fid = $id AND shows = 1")->order('c.id desc')->paginate(config('web.WEB_FHF'));
+                $tptc = db('schcom')->alias('c')->join('member m', 'm.userid=c.uid')->where("fid = $id AND shows = 1")->order('c.id desc')->paginate(config('web.WEB_FHF'));
                 $this->assign(array('tptc' => $tptc, 'tptt' => $tptt));
                 return tptc();
             } else {
@@ -159,5 +160,27 @@ class Index extends Common
             }
         }    
         return tptc();     
+    }
+
+    public function enroll(){
+        if (request()->isPost()){
+        	$enroll = new EnrollModel;
+        	$this->check(input('code'));
+        	$data = input('post.');
+        	$data['addtime']=time();
+        	if(!session('validate')){
+	    		$data['userid']=null;
+	    	}else{
+	    		$member = db('member');
+	    		$m = $member->where('validate', session('validate'))->find();
+	    		$data['userid']=$m['userid'];
+	    	}
+	    	if($enroll->add($data)){
+	    		return tpta('发布成功');
+	    	}else{
+	    		return tptb('发布失败');
+	    	}
+        }
+    	
     }
 }
