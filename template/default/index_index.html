@@ -74,7 +74,7 @@ layui.use('carousel', function(){
 <div class="tpt-none-768 tpt-none-1024 tpt-none-1200 tpt-bottom"></div>
 
 <ul class="tpt-list">
-<h3>最新文章</h3>
+<h3>最新驾校</h3>
 {volist name="tptcs" id="vo"}
 <li class="tpt-list-li">
 <div class="mod-angle">热</div><a href="__ROOT__/drschool/{$vo.id}.html" class="tpt-list-avatar">
@@ -86,8 +86,8 @@ layui.use('carousel', function(){
 </a>
 <h2 class="tpt-tip"><a href="__ROOT__/drschool/{$vo.id}.html">{$vo.title}</a></h2>
 <p>
-<span><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}">{$vo.username}</a></span>
-<span class="tpt-none-768">{$vo.addtime|date="Y-m-d H:i:s",###}</span>
+<!-- <span><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}">{$vo.username}</a></span> -->
+<span>{$vo.addtime|date="Y-m-d H:i:s",###}</span>
 <span class="tpt-list-hint" style="padding-right: 0;"> 
 <i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}</span>
 </p>
@@ -98,6 +98,7 @@ layui.use('carousel', function(){
 <p style="padding-top: 6px;line-height: 20px;">
 <span class="tpt-none-1024 tpt-none-1200 tpt-none-1920" style="padding-right: 0;">
 	<span style="color: #333;font-size: 12px;">地址：{$vo.address}</span>
+  <span class="y"><a href="__ROOT__/area/{$vo.cid}.html">{$vo.name}</a></span>
 </span>
 </p>
 </li>

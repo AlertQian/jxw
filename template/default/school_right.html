@@ -13,18 +13,18 @@
 </ul>
 </div>
 <div class="tpt-grid-org cl">
-<h2>欢迎打赏投稿</h2>
-<a style="border: 1px solid #5FB878;background-color: #5FB878;color: #FFF;padding: 0 28px;" id="tougao" class="layui-btn">我要投稿</a>
-<a style="border: 1px solid #FF5722;background-color: #FF5722;color: #FFF;padding: 0 28px;" id="zanzhu" class="layui-btn">我要打赏</a>
+<h2>欢迎驾校入驻</h2>
+<a style="border: 1px solid #5FB878;background-color: #5FB878;color: #FFF;padding: 0 28px;" id="tougao" class="layui-btn">驾校入驻</a>
+<a style="border: 1px solid #FF5722;background-color: #FF5722;color: #FFF;padding: 0 28px;" id="zanzhu" class="layui-btn">会员缴费</a>
 </div>
 </div>
 
 {if condition="config('web.WEB_FTJ') neq 0"}
 <div class="tpt-sidebar cl">
-	<h3>热门推荐</h3>
+	<h3>热门驾校</h3>
 	<ul class="tpt-c cl">
-		{volist name="tptf" id="vo"}
-		<li><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a><span><i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}<span></li>
+		{volist name="tpthot" id="vo"}
+		<li><a href="__ROOT__/drschool/{$vo.id}.html">{$vo.title}</a><span><i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}<span></li>
 		{/volist}
 	</ul>
 </div>
@@ -32,7 +32,7 @@
 
 {if condition="config('web.WEB_FJX') neq 0"}
 <div class="tpt-sidebar cl">
-	<h3>精选内容</h3>
+	<h3>驾考资讯</h3>
 	<ul class="tpt-c cl">
 	    {volist name="tpte" id="vo"}
 		<li><a href="__ROOT__/thread/{$vo.id}.html">{$vo.title}</a><span><i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}<span></li>

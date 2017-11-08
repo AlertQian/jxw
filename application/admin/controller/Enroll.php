@@ -8,7 +8,12 @@ class Enroll extends Common
     public function index()
     {
         $enroll = new EnrollModel();
-        $tptc = $enroll->alias('c')->join('school f', 'f.id=c.sid')->field('c.*,f.title')->order('c.id desc')->paginate(15);
+        $ks = input('ks');
+        $where="";
+        if($ks){
+            $where="uname like '%$ks%' || cellphone = '$ks'";
+        }
+        $tptc = $enroll->alias('c')->join('school f', 'f.id=c.sid')->field('c.*,f.title')->where($where)->order('c.id desc')->paginate(15);
         $this->assign('tptc', $tptc);
         return tptc();
     }

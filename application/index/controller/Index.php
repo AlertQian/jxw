@@ -17,9 +17,10 @@ class Index extends Common
 		$tpte = db('content')->where($shows)->where($choice)->order('id desc')->limit(config('web.WEB_FJX'))->select();
 		$tptf = db('content')->where($shows)->order('view desc')->limit(config('web.WEB_FTJ'))->select();
 		$tptb = db('banner')->where("type = 1 AND shows = 1")->order('id asc')->limit(config('web.WEB_FTP'))->select();
+		$tpthot = db('school')->where("show",1)->order('view desc')->limit(8)->select();
 		$tags = config('web.WEB_TAG');
         $tagss = explode(',', $tags);
-		$this->assign(array('tptca' => $tptca, 'tptcm' => $tptcm, 'tptcc' => $tptcc, 'tptm' => $tptm, 'tptl' => $tptl, 'tpte' => $tpte, 'tptf' => $tptf, 'tptb' => $tptb, 'tagss' => $tagss));
+		$this->assign(array('tptca' => $tptca, 'tptcm' => $tptcm, 'tptcc' => $tptcc, 'tptm' => $tptm, 'tptl' => $tptl, 'tpte' => $tpte, 'tptf' => $tptf, 'tptb' => $tptb, 'tagss' => $tagss,'tpthot' => $tpthot));
     }
     public function index()
     {

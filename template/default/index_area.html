@@ -24,8 +24,8 @@
 </a>
 <h2 class="tpt-tip"><a href="__ROOT__/drschool/{$vo.id}.html">{$vo.title}</a></h2>
 <p>
-<span><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}">{$vo.username}</a></span>
-<span class="tpt-none-768">{$vo.addtime|date="Y-m-d H:i:s",###}</span>
+<!-- <span><a href="__ROOT__/home/{$vo.userid}.html"><img src="{$vo.userhead}" alt="{$vo.username}">{$vo.username}</a></span> -->
+<span>{$vo.addtime|date="Y-m-d H:i:s",###}</span>
 <span class="tpt-list-hint" style="padding-right: 0;"> 
 <i class="iconfont" title="人气">&#xe6c0;</i> {$vo.view}</span>
 </p>

@@ -18,38 +18,44 @@
 .layui-form-item {margin: 15px 0;}
 .wangEditor-container .wangEditor-txt img {max-width: 100%;height: auto;}
 .wangEditor-txt p{line-height: 1.8;}
+.color-white{background: #fff;}
 </style>
 <div class="tpt-wp cl">
-	<div class="tpt-md-1 cl">
+	<div class="tpt-md-1 color-white cl">
 		<div class="tpt-ml-3 tpt-block-768">
+			<div class="content" style="padding-bottom: 0px;">
+			<div class="tpt-thread">		    
+		    <h1>{$tptt.title}</h1>
 			<img src="{$tptt.pic}" style="width: 100%" />
+			</div>
+		    </div>
 		</div>
 		<div class="tpt-mr-7">
 		    <div class="content">
 		    <div class="tpt-thread">		    
-		    <h1>{$tptt.title}</h1>
+		    <!-- <h1>驾校简介</h1> -->
 		    <div class="wangEditor-txt">{$tptt.content}</div>
 		    <div class="detail-info cl">
-		        <div class="cl">
-		        <div class="tpt-md-2 tpt-mat-10">
-					<span class=""><em style="font-style: normal;">联系人：</em></span>
-					<span>{$tptt.linkman}</span>
-				</div>
-				<div class="tpt-md-2 tpt-mat-10">
-					<span class=""><em style="font-style: normal;">Q　Q：</em></span>
-					<span class=""><em style="font-style: normal;font-size: 18px;color: #4f99cf">{$tptt.qq}</em></span>
-				</div>
-				</div>
-				<div class="cl">
-		        <div class="tpt-md-2 tpt-mat-10">
-					<span class=""><em style="font-style: normal;">手机号：</em></span>
-					<span class=""><em style="font-style: normal;font-size: 18px;color: #FF9E3F">{$tptt.phone}</em></span>
-				</div>
-				<div class="tpt-md-2 tpt-mat-10">
-					<span class=""><em style="font-style: normal;">地　址：</em></span>
-					<span class="">{$tptt.address}</span>
-				</div>
-				</div>
+	        <div class="cl">
+	        <div class="tpt-md-2 tpt-mat-10">
+				<span class=""><em style="font-style: normal;">联系人：</em></span>
+				<span>{$tptt.linkman}</span>
+			</div>
+			<div class="tpt-md-2 tpt-mat-10">
+				<span class=""><em style="font-style: normal;">Q　 Q：</em></span>
+				<span class=""><em style="font-style: normal;font-size: 18px;color: #4f99cf">{$tptt.qq}</em></span>
+			</div>
+			</div>
+			<div class="cl">
+	        <div class="tpt-md-2 tpt-mat-10">
+				<span class=""><em style="font-style: normal;">手机号：</em></span>
+				<span class=""><em style="font-style: normal;font-size: 18px;color: #FF9E3F">{$tptt.phone}</em></span>
+			</div>
+			<div class="tpt-md-2 tpt-mat-10">
+				<span class=""><em style="font-style: normal;">地　址：</em></span>
+				<span class="">{$tptt.address}</span>
+			</div>
+			</div>
 		    </div>	
 		    </div>
 		    </div>

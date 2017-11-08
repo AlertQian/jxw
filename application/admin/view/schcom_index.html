@@ -7,32 +7,34 @@
 <div class="fly-panel fly-panel-user">
 <div class="tpt—admin">
 <fieldset class="layui-elem-field layui-field-title">
-<legend>驾校报名</legend>
+<legend>驾校评论</legend>
 </fieldset>
-<form class="layui-form" action="{:url('enroll/index')}" method="get">
-<input placeholder="输入姓名/电话号码" name="ks" value="<?php echo input('ks');?>" type="text" class="layui-input" style="float: left;margin-right: 10px;width: 240px;">
-<button class="layui-btn" style="float: left;" value="查询" type="submit">查询</button>
-</form>
 <form class="layui-form">
 <table width="100%">
 <tr>
 <th width="5%" align="center"><input type="checkbox" name="checkAll" lay-filter="checkAll"></th>
 <th width="5%" align="center">ID</th>
-<th width="10%" align="center">姓名</th>
-<th width="20%" align="center">联系电话</th>
-<th width="20%" align="center">驾校</th>
-<th width="20%" align="center">时间</th>
+<th width="10%" align="center">显示</th>
+<th width="25%" align="center">评论</th>
+<th width="25%" align="center">驾校</th>
+<th width="10%" align="center">会员</th>
+<th width="10%" align="center">时间</th>
 <th width="10%" align="center">基本操作</th>
 </tr>
 {volist name="tptc" id="vo"}
 <tr>
 <td align="center"><input type="checkbox" name="ids[{$vo.id}]" lay-filter="checkOne" value="{$vo.id}"></td>
 <td align="center">{$vo.id}</td>
-<td align="center"><a target="_blank" href="__ROOT__/home/{$vo.userid}.html">{$vo.uname}</a></td>
-<td align="center">{$vo.cellphone}</td>
-<td align="center">{$vo.title}</td>
-<td align="center">{$vo.addtime|date="Y-m-d h:i:s",###}</td>
-<td align="center"><a class="layui-btn layui-btn-mini layui-btn-warm" href="{:url('enroll/edit',array('id'=>$vo['id']))}">修改</a> <a class="layui-btn layui-btn-mini layui-btn-danger del_btn" member-id="{$vo.id}" title="删除" nickname="{$vo.uname}">删除</a>
+<td align="center">
+<a change="{$vo.id}" onclick="changeshows(this);" {if condition="$vo['shows'] eq 1"}class="layui-unselect layui-form-switch layui-form-onswitch"{else /}class="layui-unselect layui-form-switch"{/if}>
+<em>显示</em><i></i>
+</a>
+</td>
+<td class="tpt-rap">{$vo.content|content_zh=0,50}</td>
+<td class="tpt-rap">{$vo.title|content_zh=0,50}</td>
+<td align="center"><a target="_blank" href="__ROOT__/home/{$vo.uid}.html">{$vo.username}</a></td>
+<td align="center">{$vo.time|date="Y-m-d",###}</td>
+<td align="center"><a class="layui-btn layui-btn-mini layui-btn-warm" href="{:url('schcom/edit',array('id'=>$vo['id']))}">修改</a> <a class="layui-btn layui-btn-mini layui-btn-danger del_btn" member-id="{$vo.id}" title="删除" nickname="此评论吗">删除</a>
 </td>
 </tr>
 {/volist}
@@ -44,7 +46,24 @@
 <div class="pages" style="float: right;">{$tptc->render()}</div>
 </div>
 </form>
-
+<script>
+function changeshows(o){
+  var change=$(o).attr("change");
+  $.ajax({
+	  type:"post",
+	  dataType:"json",
+      data:{change:change},
+	  url:"{:url('schcom/changeshows')}",
+	  success:function(data){
+		  if(data == 1){
+			  $(o).attr("class","layui-unselect layui-form-switch");
+	      }else{
+			  $(o).attr("class","layui-unselect layui-form-switch layui-form-onswitch");
+	      }
+	  }
+  });
+}
+</script>
 <script>
 layui.use('form',function(){
   var form = layui.form,
@@ -53,11 +72,11 @@ layui.use('form',function(){
   jq('.del_btn').click(function(){
     var name = jq(this).attr('nickname');
     var id = jq(this).attr('member-id');
-    layer.confirm('确定删除【'+name+'】报名?', function(index){
+    layer.confirm('确定删除【'+name+'】?', function(index){
       loading = layer.load(2, {
         shade: [0.2,'#000']
       });
-      jq.post('{:url("enroll/dels")}',{'id':id},function(data){
+      jq.post('{:url("schcom/dels")}',{'id':id},function(data){
         if(data.code == 200){
           layer.close(loading);
           layer.msg(data.msg, {icon: 1, time: 1000}, function(){
@@ -109,7 +128,7 @@ layui.use('form',function(){
         shade: [0.2,'#000']
       });
       var param = data.field;
-      jq.post('{:url("enroll/delss")}',param,function(data){
+      jq.post('{:url("schcom/delss")}',param,function(data){
         if(data.code == 200){
           layer.close(loading);
           layer.msg(data.msg, {icon: 1, time: 1000}, function(){
