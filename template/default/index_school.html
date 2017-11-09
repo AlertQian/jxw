@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>  
-<title>{:config('web.WEB_AUT')}</title>
+<title>{$tptt.title}-{:config('web.WEB_TIT')}</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 {include file="index/header"}
@@ -21,6 +21,13 @@
 .color-white{background: #fff;}
 </style>
 <div class="tpt-wp cl">
+<div class="bdsharebuttonbox tpt-none-768 tpt-none-1024 bdshare-button-style0-24" style="margin-left: -80px;" data-bd-bind="1510194954874">
+<a href="#" class="bds_tsina1 bds_ico" data-cmd="tsina" title="分享到新浪微博"></a>
+<a href="#" class="bds_weixin1 bds_ico" data-cmd="weixin" title="分享到微信"></a>
+<a href="#" class="bds_qzone1 bds_ico" style="border-bottom: 0px" data-cmd="qzone" title="分享到QQ空间"></a>
+<a href="#pinglun" class="bds_pin bds_ico2" style="margin-top: 30px;border-bottom: 0px">评论</a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 	<div class="tpt-md-1 color-white cl">
 		<div class="tpt-ml-3 tpt-block-768">
 			<div class="content" style="padding-bottom: 0px;">
@@ -65,7 +72,7 @@
 	<div class="tpt-md-1 tpt-mat-10">
 		{if condition="isset($imgsarr)"}
 		<div class="content">
-			<div id="pinglun" class="tpt-tag-box cl"><span>驾校风采</span></div>
+			<div class="tpt-tag-box cl"><span>驾校风采</span></div>
 			<div class="tpt-banner cl">
 			<div class="layui-carousel" id="banner">
 			  <div carousel-item> 
@@ -91,7 +98,7 @@
 		{/if}
 
 		<div class="content tpt-mat-10">
-		<div id="pinglun" class="tpt-tag-box cl"><span>在线报名</span></div>
+		<div class="tpt-tag-box cl"><span>在线报名</span></div>
 		<form class="layui-form layui-form-pane" method="post" style="padding: 10px 0 0 0;">
 		<div class="layui-form-item">
 	    <label class="layui-form-label">联系人</label>

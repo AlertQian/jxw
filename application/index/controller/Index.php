@@ -177,11 +177,10 @@ class Index extends Common
 	    		$data['userid']=$m['userid'];
 	    	}
 	    	if($enroll->add($data)){
-	    		return tpta('发布成功');
+	    		return tpta('报名成功');
 	    	}else{
-	    		return tptb('发布失败');
+	    		return tptb('报名失败');
 	    	}
         }
-    	
     }
 }

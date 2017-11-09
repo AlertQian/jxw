@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>  
-<title>登录 - Templet360</title>
+<title>登录 - {:config('web.WEB_TIT')}</title>
 {include file="index/header"}
 <link rel="stylesheet" href="__HOME__/css/user.css">
 <div class="tpt-wp cl">
@@ -31,7 +31,7 @@
 <input type="text" name="code" required lay-verify="required" autocomplete="off" class="layui-input">
 </div>
 </div>
-<div class="" style="float: left;margin-bottom: 20px;">
+<div class="captcha" style="float: left;margin-bottom: 20px;">
 <img src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?'+Math.random();" style="float:left; cursor:pointer;" alt="captcha" />
 </div>
 <div class="layui-form-item">
@@ -78,6 +78,7 @@ location.href = '__ROOT__/';
 }else{
 layer.close(loading);
 layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+$('.captcha img').attr('src',$('.captcha img').attr("src").substring(0,13)+"?"+Math.random());
 }
 });
 return false;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tpt-Content内容管理系统 - TPTCMS</title>
+  <title>{:config('web.WEB_TIT')}--后台管理</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
 </head>
 <body id="login">
 <div class="login">
-<h2>TPTCMS后台管理</h2>
+<h2>后台管理</h2>
 <form class="layui-form">
 <div class="layui-form-item">
 <input type="text" name="adminname" placeholder="请输入账号" required lay-verify="required" autocomplete="off" class="layui-input">
@@ -24,7 +24,7 @@
 <div class="layui-form-item">
 <input type="text" name="kouling" placeholder="请输入口令" required lay-verify="required" autocomplete="off" class="layui-input">
 </div>
-<div class="layui-form-item">
+<div class="layui-form-item captcha">
 <input style="width:100px;float:left;margin-right: 10px;" type="text" name="code" placeholder="验证码" required lay-verify="required" autocomplete="off" class="layui-input">
 <img src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?'+Math.random();" width="150" style="float:left; cursor:pointer;" alt="captcha" />
 </div>
@@ -51,6 +51,7 @@ layui.use('form',function(){
       }else{
         layer.close(loading);
         layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+        $('.captcha img').attr('src',$('.captcha img').attr("src")+"?"+Math.random());
       }
     });
     return false;

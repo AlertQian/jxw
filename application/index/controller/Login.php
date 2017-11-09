@@ -33,7 +33,7 @@ class Login extends Common
 			}
 			return tptc();
 		} else {
-			header("Location: ../user/set.html");
+			$this->redirect("user/set");
 		}
 	}
 	public function reg()
@@ -82,7 +82,7 @@ class Login extends Common
 			}
 			return tptc();
         } else {
-			header("Location: ../user/set.html");
+			$this->redirect("user/set");
 		}
 	}
 	public function qq()

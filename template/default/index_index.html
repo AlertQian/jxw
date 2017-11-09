@@ -15,7 +15,7 @@
 <div class="layui-carousel" id="banner">
   <div carousel-item>
     {volist name="tptb" id="vo"}
-    <div><a target="_blank" href="{$vo.links}"><img src="__UPLO__{$vo.pic}" style="height: 320px;"></a></div>
+    <div><a target="_blank" href="{$vo.links}"><img src="__UPLO__{$vo.pic}" ></a></div>
 	{/volist}
   </div>
 </div>
@@ -25,7 +25,6 @@ layui.use('carousel', function(){
   carousel.render({
     elem: '#banner'
     ,width: '100%'
-    ,height: '320px'
     ,interval: 4000
     ,arrow: 'always'
   });
