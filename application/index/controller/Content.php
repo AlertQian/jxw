@@ -37,7 +37,7 @@ class Content extends Common
 					}
 				}
 				$category = db('category');
-				$tptc = $category->where("tid != 0 AND shows = 1")->select();
+				$tptc = $category->where("tid != 0 AND shows = 1")->where('type',1)->select();
 				$tags = config('web.WEB_TAG');
 				$tagss = explode(',', $tags);
 				$this->assign(array('tptc' => $tptc, 'tagss' => $tagss));

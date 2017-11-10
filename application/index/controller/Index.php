@@ -12,6 +12,7 @@ class Index extends Common
 		$tptca = db('content')->count();
 		$tptcm = db('member')->count();
 		$tptcc = db('comment')->count();
+		$tptch = db('schcom')->count();
 		$tptm = db('member')->where($status)->order('userid desc')->limit(config('web.WEB_FHY'))->select();
         $tptl = db('links')->where($shows)->order('id desc')->select();
 		$tpte = db('content')->where($shows)->where($choice)->order('id desc')->limit(config('web.WEB_FJX'))->select();
@@ -20,16 +21,18 @@ class Index extends Common
 		$tpthot = db('school')->where("show",1)->order('view desc')->limit(8)->select();
 		$tags = config('web.WEB_TAG');
         $tagss = explode(',', $tags);
-		$this->assign(array('tptca' => $tptca, 'tptcm' => $tptcm, 'tptcc' => $tptcc, 'tptm' => $tptm, 'tptl' => $tptl, 'tpte' => $tpte, 'tptf' => $tptf, 'tptb' => $tptb, 'tagss' => $tagss,'tpthot' => $tpthot));
+		$this->assign(array('tptca' => $tptca, 'tptcm' => $tptcm, 'tptcc' => $tptcc, 'tptch' => $tptch, 'tptm' => $tptm, 'tptl' => $tptl, 'tpte' => $tpte, 'tptf' => $tptf, 'tptb' => $tptb, 'tagss' => $tagss,'tpthot' => $tpthot));
     }
     public function index()
     {
         $school = db('school');
+        $enroll = db('enroll');
         $shows['f.show'] = 1;
         $settop['settop'] = 1;
         $tptc = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->where($settop)->order('f.id desc')->limit(config('web.WEB_FDZ'))->select();
+        $count=db('school')->count();
         $tptcs = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->order('f.id desc')->paginate(config('web.WEB_FYS'));
-        $this->assign(array('tptc' => $tptc, 'tptcs' => $tptcs));
+        $this->assign(array('tptc' => $tptc, 'tptcs' => $tptcs,'count'=>$count));
         return tptc();
     }
     public function forum()

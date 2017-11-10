@@ -49,7 +49,7 @@ class Content extends Common
         }
         $category = db('category');
         $tptc = $content->find(input('id'));
-        $tptcs = $category->where("tid != 0")->select();
+        $tptcs = $category->where("tid != 0")->where('type',1)->select();
         $tags = config('web.WEB_TAG');
         $tagss = explode(',', $tags);
         $this->assign(array('tptc' => $tptc, 'tptcs' => $tptcs, 'tagss' => $tagss));

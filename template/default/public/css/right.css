@@ -9,7 +9,7 @@
 
 .tpt-banner,.tpt-banners{margin-bottom:20px}
 .tpt-banners img {width: 100%;height:180px;}
-.tpt-banner img{width: 100%}
+.tpt-banner img{width: 100%;height: 320px;}
 
 .tpt-tsearch{border-top:4px solid #4fc277}
 .tpt-tsearch form{position:relative;margin:20px 20px 0 20px;padding:0 10px;background:#fff}
@@ -54,3 +54,7 @@
 .tpt-grid-org{text-align:center}
 .tpt-grid-org h2{font-size:22px;color:#1499f8;margin:26px 0}
 .tpt-grid-org p{font-size:16px;color:#1499f8;margin:11px 0 30px 0}
+
+@media only screen and (max-width: 767px) {
+.tpt-banner img{height: 180px;}
+}

@@ -203,35 +203,39 @@ layui.use(['form', 'upload'],function(){
           imgs=$("input[name=imgs]").val(),
           $this=$(this),
           tag=",";
-          $.ajax({
-            url:'{:url("school/delimg")}',
-            type:"post",
-            data:{src:src},
-            dataType:"json",
-            success:function(data){
-              if(data == 1){
-                if(imgs.indexOf(tag) !== -1){
-                  if($this.parent('.imgbox').index() == 0){
-                    srcurl=src+tag;
+          layer.confirm("确定要删除该图片？",{
+             btn: ['确定','取消']
+           },function(){
+              $.ajax({
+                url:'{:url("school/delimg")}',
+                type:"post",
+                data:{src:src},
+                dataType:"json",
+                success:function(data){
+                  if(data == 1){
+                    if(imgs.indexOf(tag) !== -1){
+                      if($this.parent('.imgbox').index() == 0){
+                        srcurl=src+tag;
+                      }else{
+                        srcurl=tag+src;
+                      }
+                      delimg=imgs.replace(srcurl,'');
+                    }else{
+                      srcurl=src;
+                      delimg=imgs.replace(srcurl,'');
+                    }
+                    $("input[name=imgs]").val(delimg);
+                    $this.parent('.imgbox').remove();
+                    layer.msg("删除成功，记得提交保存", {icon: 1,anim: 6, time: 2000});
                   }else{
-                    srcurl=tag+src;
+                    layer.msg("系统有误", {icon: 2,anim: 6, time: 1000});
                   }
-                  delimg=imgs.replace(srcurl,'');
-                }else{
-                  srcurl=src;
-                  delimg=imgs.replace(srcurl,'');
+                },
+                error:function(data){
+                  layer.msg("删除失败", {icon: 2,anim: 6, time: 1000});
                 }
-                $("input[name=imgs]").val(delimg);
-                $this.parent('.imgbox').remove();
-              }else{
-                layer.msg("系统有误", {icon: 2,anim: 6, time: 1000});
-              }
-            },
-            error:function(data){
-              layer.msg("删除失败", {icon: 2,anim: 6, time: 1000});
-            }
-          })
-          
+              })
+          });
     })
   })
 </script>
