@@ -29,10 +29,11 @@ class Index extends Common
         $enroll = db('enroll');
         $shows['f.show'] = 1;
         $settop['settop'] = 1;
+        $tpten=$enroll->alias('f')->join('school c','c.id=f.sid')->field('f.*,c.title')->order('f.id desc')->limit(8)->select();
         $tptc = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->where($settop)->order('f.id desc')->limit(config('web.WEB_FDZ'))->select();
         $count=db('school')->count();
         $tptcs = $school->alias('f')->join('category c', 'c.id=f.tid')->join('member m', 'm.userid=f.uid')->field('f.*,c.id as cid,m.userid,m.userhead,m.username,c.name')->where($shows)->order('f.id desc')->paginate(config('web.WEB_FYS'));
-        $this->assign(array('tptc' => $tptc, 'tptcs' => $tptcs,'count'=>$count));
+        $this->assign(array('tptc' => $tptc,'tptcs' => $tptcs,'count'=>$count,'tpten'=>$tpten));
         return tptc();
     }
     public function forum()
